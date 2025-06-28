@@ -1,7 +1,7 @@
 // sass --watch --no-source-map styles.scss:styles.css
 @use "sizing";
 @use "media-queries";
-@import "animate.css";
+@import "animate.css/animate.min.css";
 
 // setting the background colour of the page
 // * {
