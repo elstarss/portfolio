@@ -40,6 +40,8 @@ a:visited {
     display: flex;
     justify-content: center;
     font-size: sizing.$font-base;
+    animation: animate__bounceIn;
+    animation-duration: 10s;
 }
 // banner image to break up header and body of webpage
 .banner-medium {
@@ -49,8 +51,6 @@ a:visited {
 }
 //styling header, image displayed only on desktop versions
 .header1 {
-    animation: bouce;
-    animation-duration: 2s;
     display: flex;
     margin-top: 6vw;
     margin-left: 6vw;
@@ -65,10 +65,6 @@ a:visited {
         @include media-queries.tablet {
             display: none;
         }
-    }
-    &__title {
-        animation: bouce;
-        animation-duration: 2s;
     }
 }
 // styling about me section, on mobiles the content is displayed in a column, on desktops the content is displayed in a row
