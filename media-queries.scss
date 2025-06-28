@@ -1,12 +1,19 @@
 // @use "./styles.scss";
-$s: 428px; // Mobile
-$lg: 1728px; // desktop
+$s: 600px; // Mobile
+$m: 792px; //tablet
+$lg: 769px; // desktop
 
 @mixin mobile {
     @media only screen and (max-width: $s) {
         @content;
     }
 }
+@mixin tablet {
+    @media only screen and (min-width: $s + 1px) and (max-width: $m) {
+        @content;
+    }
+}
+
 @mixin desktop {
     @media only screen and (min-width: $lg) {
         @content;

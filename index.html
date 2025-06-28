@@ -8,6 +8,7 @@
         <!-- header -->
     </head>
     <body>
+        <div class="banner-dark"></div>
         <!-- navigation bar only for desktop -->
         <nav class="navigation-bar desktop-only">
             <a href="">Home</a>
@@ -17,6 +18,7 @@
         </nav>
         <!-- header intro with introduction -->
         <h3 class="tagline">&#128075; Hey! I'm Ella Ball</h3>
+        <div class="banner-medium"></div>
         <header class="header1">
             <h1 class="header1__title">
                 A Junior Software Developer based in the UK.
@@ -30,39 +32,40 @@
         <main>
             <!-- about me header central on page -->
             <section class="about-me-section" id="aboutMe">
-                <div class="about-me-section__content--header">
-                    <h2>About me</h2>
-                </div>
-                <div class="about-me-section-row">
-                    <!-- image of self central -->
-                    <img
-                        class="about-me-section__content about-me-section__content--img"
-                        src="Profile.png"
-                        alt="stock photo of a man with a hat"
-                    />
-                    <p
-                        class="about-me-section__content about-me-section__content--p"
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Morbi justo metus, ornare at elementum in, tristique
-                        vitae augue. Curabitur rhoncus urna ligula, nec egestas
-                        eros lacinia id. Cras scelerisque in ante et finibus.
-                        Aenean id felis ipsum. Cras id velit egestas, venenatis
-                        tortor vitae, vulputate mauris. Mauris vel scelerisque
-                        felis. Phasellus accumsan massa nec tincidunt consequat.
-                        <br />Sed imperdiet, ante ut auctor imperdiet, neque
-                        lacus blandit elit, eget sodales ex quam et leo.
-                        Maecenas non augue nec eros gravida rutrum. Aenean vel
-                        risus nisl. Nulla condimentum leo sit amet consectetur
-                        hendrerit. Nunc eros sem, lobortis dictum pretium vel,
-                        elementum in nibh. Suspendisse eget pellentesque diam.
-                        Aliquam justo neque, imperdiet molestie varius nec,
-                        auctor sodales justo. Sed nec odio eget sem porttitor
-                        suscipit.
-                    </p>
-                </div>
+                <h2
+                    class="about-me-section__content about-me-section__content--header about-me-section-header"
+                >
+                    About me
+                </h2>
+                <!-- <div class="about-me-section__content about-me-section-row"> -->
+                <!-- image of self central -->
+                <img
+                    class="about-me-section__content about-me-section__content--img about-me-section-img"
+                    src="me.jpeg"
+                    alt="photo of me on a boat in malta"
+                />
+                <p
+                    class="about-me-section__content about-me-section__content--p about-me-section-p"
+                >
+                    <br /><br />
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Morbi justo metus, ornare at elementum in, tristique vitae
+                    augue. Curabitur rhoncus urna ligula, nec egestas eros
+                    lacinia id. Cras scelerisque in ante et finibus. Aenean id
+                    felis ipsum. Cras id velit egestas, venenatis tortor vitae,
+                    vulputate mauris. Mauris vel scelerisque felis. Phasellus
+                    accumsan massa nec tincidunt consequat.
+                    <br />Sed imperdiet, ante ut auctor imperdiet, neque lacus
+                    blandit elit, eget sodales ex quam et leo. Maecenas non
+                    augue nec eros gravida rutrum. Aenean vel risus nisl. Nulla
+                    condimentum leo sit amet consectetur hendrerit. Nunc eros
+                    sem, lobortis dictum pretium vel, elementum in nibh.
+                    Suspendisse eget pellentesque diam. Aliquam justo neque,
+                    imperdiet molestie varius nec, auctor sodales justo. Sed nec
+                    odio eget sem porttitor suscipit.
+                </p>
             </section>
-
+            <div class="banner-medium"></div>
             <!--technical skills header  -->
             <!-- intro to technical skills -->
             <section class="skills">
@@ -78,7 +81,10 @@
             <section class="projects__header" id="projectSection">
                 <!-- projects -->
                 <h2 class="projects__header">My Projects</h2>
-                <p>Here is where the project section will be.</p>
+                <p>
+                    Here is where the project section will be. And this is where
+                    the introduction to those projects will be.
+                </p>
                 <div class="project-container">
                     <div class="project project1">Project 1</div>
                     <div class="project project2">Project 2</div>
@@ -91,15 +97,24 @@
             <!-- graphics of languages -->
         </main>
         <!-- footer with links to github etc and email below -->
-        <footer class="footer" id="emailLink">
-            <p class="footer__content">
-                Find me at:
-                <a
-                    class="footer footer__content--link"
-                    href="mailto:ella55ball@gmail.com"
-                    >ella55ball@gmail.com</a
-                >
-            </p>
+        <footer>
+            <div class="footer" id="emailLink">
+                <p class="footer__content">
+                    Find me at:
+                    <a
+                        class="footer__content--email"
+                        href="mailto:ella55ball@gmail.com"
+                        >ella55ball@gmail.com</a
+                    >
+                    and
+                    <a href="https://github.com/elstarss" target="_blank"
+                        ><img
+                            class="footer__content--github"
+                            src="github-image.png"
+                            alt="github logo"
+                    /></a>
+                </p>
+            </div>
         </footer>
     </body>
 </html>

@@ -8,7 +8,13 @@ a:link {
 }
 
 a:visited {
-  color: aqua;
+  color: rgb(216, 207, 216);
+}
+
+.banner-dark {
+  width: 100vw;
+  height: 3vw;
+  background-color: rgb(62, 27, 79);
 }
 
 .navigation-bar {
@@ -18,9 +24,9 @@ a:visited {
   justify-content: space-evenly;
 }
 .navigation-bar__touch {
-  border: white dashed 6px;
+  border: rgb(216, 207, 216) dashed 6px;
 }
-@media only screen and (max-width: 428px) {
+@media only screen and (max-width: 600px) {
   .navigation-bar {
     display: none;
   }
@@ -32,51 +38,74 @@ a:visited {
   font-size: 1rem;
 }
 
+.banner-medium {
+  width: 100vw;
+  height: 3vw;
+  background-color: rgb(113, 44, 113);
+}
+
 .header1 {
   display: flex;
   margin-top: 6vw;
-  margin-left: 2vw;
+  margin-left: 6vw;
   justify-content: center;
   font-size: 2rem;
 }
 
-@media only screen and (max-width: 428px) {
+.header1__title--img {
+  width: auto;
+}
+@media only screen and (max-width: 600px) {
+  .header1__title--img {
+    display: none;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 792px) {
   .header1__title--img {
     display: none;
   }
 }
 
-.about-me-section-row {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.about-me-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "header" "image" "paragraph";
+  gap: 1.5rem;
+  padding: 2rem;
 }
-@media only screen and (min-width: 1728px) {
-  .about-me-section-row {
-    display: flex;
-    flex-direction: row;
+@media only screen and (min-width: 769px) {
+  .about-me-section {
+    grid-template-columns: 2fr 3fr;
+    grid-template-areas: "image content" "image content";
     align-items: center;
-    justify-content: space-evenly;
   }
 }
-
-about-me-section__content--header {
-  margin: auto;
+.about-me-section__content--header {
+  grid-area: header;
+  text-align: center;
 }
-@media only screen and (min-width: 1728px) {
-  about-me-section__content--header {
-    justify-content: flex-end;
+@media only screen and (min-width: 769px) {
+  .about-me-section__content--header {
+    grid-area: content;
+    align-self: flex-start;
   }
 }
-
 .about-me-section__content--p {
-  width: 80vw;
+  grid-area: paragraph;
 }
-@media only screen and (min-width: 1728px) {
+@media only screen and (min-width: 769px) {
   .about-me-section__content--p {
-    width: 40vw;
+    grid-area: content;
+    align-self: center;
+    max-width: 70vw;
   }
+}
+.about-me-section__content--img {
+  grid-area: image;
+  justify-self: center;
+  max-width: 40vw;
+  max-height: 40vw;
+  height: auto;
 }
 
 .skills {
@@ -116,14 +145,26 @@ about-me-section__content--header {
 }
 
 .project {
-  border: 2px solid white;
+  border: 2px dashed white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer {
-  display: flex;
-  justify-content: center;
-  color: white;
   width: 100%;
-  background-color: rgb(97, 29, 131);
-  font-size: 0.875rem;
+  background-color: rgb(62, 27, 79);
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  color: white;
+}
+
+.footer__content--github {
+  max-width: 4vw;
+  max-width: 4vs;
+  align-self: center;
+  opacity: 0.5;
 }
