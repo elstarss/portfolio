@@ -1,0 +1,22 @@
+// @use "./styles.scss";
+$s: 428px; // Mobile
+$lg: 1728px; // desktop
+
+@mixin mobile {
+    @media only screen and (max-width: $s) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media only screen and (min-width: $lg) {
+        @content;
+    }
+}
+
+//or
+//for desktops do not display any content labelled as mobile-only
+// @media (min-width: 1728px) {
+//     .mobile-only {
+//         display: none;
+//     }
+// }

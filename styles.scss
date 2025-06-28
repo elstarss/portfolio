@@ -1,0 +1,122 @@
+// sass --watch --no-source-map styles.scss:styles.css
+@use "sizing";
+@use "media-queries";
+
+// setting the background colour of the page
+// * {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
+body {
+    background-color: rgb(172, 128, 180);
+    font-family: Arial, Helvetica, sans-serif;
+}
+a:link {
+    color: white;
+}
+a:visited {
+    color: aqua;
+}
+.navigation-bar {
+    display: flex;
+    font-size: sizing.$font-base;
+    margin: 3vw;
+    justify-content: space-evenly;
+    &__touch {
+        border: white dashed 6px;
+    }
+    @include media-queries.mobile {
+        display: none;
+    }
+}
+.tagline {
+    display: flex;
+    justify-content: center;
+    font-size: sizing.$font-base;
+}
+//styling header, image displayed only on desktop versions
+.header1 {
+    display: flex;
+    margin-top: 6vw;
+    margin-left: 2vw;
+    // flex-direction: row;
+    justify-content: center;
+    font-size: sizing.$font-xxl;
+}
+.header1__title--img {
+    @include media-queries.mobile {
+        display: none;
+    }
+}
+// styling about me section, on mobiles the content is displayed in a column, on desktops the content is displayed in a row
+.about-me-section-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include media-queries.desktop {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}
+about-me-section__content--header {
+    margin: auto;
+    @include media-queries.desktop {
+        justify-content: flex-end;
+    }
+}
+.about-me-section__content--p {
+    width: 80vw;
+    @include media-queries.desktop {
+        width: 40vw;
+    }
+}
+//styling for skills section of webpage
+.skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vw;
+    margin-bottom: 10vw;
+}
+.skills__content--image {
+    max-width: 80%;
+    height: auto;
+}
+.projects__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: sizing.$font-base;
+}
+.project-container {
+    display: grid;
+    grid-template-columns: 40vw 40vw;
+    grid-template-rows: 40vw 40vw;
+    row-gap: 2vw;
+    column-gap: 2vw;
+    justify-content: space-evenly;
+    padding: 2vw;
+}
+// setting borders around divs for where projects will be
+.project {
+    border: 2px solid white;
+}
+// not sure why this is not across whole screen
+.footer {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: 100%;
+    background-color: rgb(97, 29, 131);
+    font-size: sizing.$font-sm;
+}

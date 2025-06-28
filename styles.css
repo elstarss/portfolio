@@ -1,0 +1,129 @@
+body {
+  background-color: rgb(172, 128, 180);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: aqua;
+}
+
+.navigation-bar {
+  display: flex;
+  font-size: 1rem;
+  margin: 3vw;
+  justify-content: space-evenly;
+}
+.navigation-bar__touch {
+  border: white dashed 6px;
+}
+@media only screen and (max-width: 428px) {
+  .navigation-bar {
+    display: none;
+  }
+}
+
+.tagline {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.header1 {
+  display: flex;
+  margin-top: 6vw;
+  margin-left: 2vw;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+@media only screen and (max-width: 428px) {
+  .header1__title--img {
+    display: none;
+  }
+}
+
+.about-me-section-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (min-width: 1728px) {
+  .about-me-section-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+
+about-me-section__content--header {
+  margin: auto;
+}
+@media only screen and (min-width: 1728px) {
+  about-me-section__content--header {
+    justify-content: flex-end;
+  }
+}
+
+.about-me-section__content--p {
+  width: 80vw;
+}
+@media only screen and (min-width: 1728px) {
+  .about-me-section__content--p {
+    width: 40vw;
+  }
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10vw;
+  margin-bottom: 10vw;
+}
+
+.skills__content--image {
+  max-width: 80%;
+  height: auto;
+}
+
+.projects__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.project-container {
+  display: grid;
+  grid-template-columns: 40vw 40vw;
+  grid-template-rows: 40vw 40vw;
+  row-gap: 2vw;
+  column-gap: 2vw;
+  justify-content: space-evenly;
+  padding: 2vw;
+}
+
+.project {
+  border: 2px solid white;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  color: white;
+  width: 100%;
+  background-color: rgb(97, 29, 131);
+  font-size: 0.875rem;
+}
