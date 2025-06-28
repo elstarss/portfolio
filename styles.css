@@ -66,6 +66,9 @@ a:visited {
     display: none;
   }
 }
+.header1__title--header {
+  animation-duration: 3s;
+}
 
 .about-me-section {
   display: grid;
@@ -77,7 +80,7 @@ a:visited {
 @media only screen and (min-width: 769px) {
   .about-me-section {
     grid-template-columns: 2fr 3fr;
-    grid-template-areas: "image content" "image content";
+    grid-template-areas: "content image" "content image";
     align-items: center;
   }
 }

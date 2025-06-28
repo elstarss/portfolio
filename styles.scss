@@ -53,7 +53,6 @@ a:visited {
     display: flex;
     margin-top: 6vw;
     margin-left: 6vw;
-    // flex-direction: row;
     justify-content: center;
     font-size: sizing.$font-xxl;
     &__title--img {
@@ -64,6 +63,9 @@ a:visited {
         @include media-queries.tablet {
             display: none;
         }
+    }
+    &__title--header {
+        animation-duration: 3s;
     }
 }
 // styling about me section, on mobiles the content is displayed in a column, on desktops the content is displayed in a row
@@ -80,8 +82,8 @@ a:visited {
     @include media-queries.desktop {
         grid-template-columns: 2fr 3fr;
         grid-template-areas:
-            "image content"
-            "image content";
+            "content image"
+            "content image";
         align-items: center;
     }
 
