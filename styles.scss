@@ -98,6 +98,7 @@ a:visited {
             align-self: flex-start;
         }
     }
+
     &__content--p {
         grid-area: paragraph;
 
@@ -107,16 +108,36 @@ a:visited {
             max-width: 70vw;
         }
     }
-    &__content--img {
+
+    &__content--container {
         grid-area: image;
         justify-self: center;
-        max-width: 40vw;
-        max-height: 40vw;
+        position: relative;
         padding-right: 10px;
         border-radius: 10px;
+        max-width: 40vw;
+        max-height: 40vw;
     }
 }
 
+.about-me-image {
+    width: 95%;
+    height: auto;
+    display: block;
+    position: relative;
+    // z index determines order of image layering
+    z-index: 0;
+}
+// overlaying a graphic over main image,making it slightly wider than main image (by changing main to 95%) and at a slight angle using transform and rotate
+.about-me-image__overlay {
+    position: absolute;
+    bottom: 0;
+    right: 10;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    transform: rotate(190deg);
+}
 .skills {
     display: flex;
     flex-direction: column;

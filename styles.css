@@ -106,13 +106,32 @@ a:visited {
     max-width: 70vw;
   }
 }
-.about-me-section__content--img {
+.about-me-section__content--container {
   grid-area: image;
   justify-self: center;
-  max-width: 40vw;
-  max-height: 40vw;
+  position: relative;
   padding-right: 10px;
   border-radius: 10px;
+  max-width: 40vw;
+  max-height: 40vw;
+}
+
+.about-me-image {
+  width: 95%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+.about-me-image__overlay {
+  position: absolute;
+  bottom: 0;
+  right: 10;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  transform: rotate(190deg);
 }
 
 .skills {
