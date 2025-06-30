@@ -132,6 +132,7 @@ a:visited {
   height: auto;
   z-index: 1;
   transform: rotate(190deg);
+  opacity: 0.75;
 }
 
 .skills {
@@ -175,7 +176,7 @@ a:visited {
 }
 
 .project-box {
-  border: 2px dashed white;
+  border: 4px dashed rgb(229, 211, 238);
   display: flex;
   align-items: center;
   justify-content: center;
