@@ -56,7 +56,6 @@ a:visited {
     justify-content: center;
     font-size: sizing.$font-xxl;
     &__title--img {
-        width: auto;
         animation-duration: 3s;
         @include media-queries.mobile {
             display: none;
@@ -88,35 +87,37 @@ a:visited {
         align-items: center;
     }
 
-    &__content--header {
-        grid-area: header;
-        text-align: center;
-        font-size: sizing.$font-xl;
+    &__content {
+        &--header {
+            grid-area: header;
+            text-align: center;
+            font-size: sizing.$font-xl;
 
-        @include media-queries.desktop {
-            grid-area: content;
-            align-self: flex-start;
+            @include media-queries.desktop {
+                grid-area: content;
+                align-self: flex-start;
+            }
         }
-    }
 
-    &__content--p {
-        grid-area: paragraph;
+        &--p {
+            grid-area: paragraph;
 
-        @include media-queries.desktop {
-            grid-area: content;
-            align-self: center;
-            max-width: 70vw;
+            @include media-queries.desktop {
+                grid-area: content;
+                align-self: center;
+                max-width: 70vw;
+            }
         }
-    }
 
-    &__content--container {
-        grid-area: image;
-        justify-self: center;
-        position: relative;
-        padding-right: 10px;
-        border-radius: 10px;
-        max-width: 40vw;
-        max-height: 40vw;
+        &--container {
+            grid-area: image;
+            justify-self: center;
+            position: relative;
+            padding-right: 10px;
+            border-radius: 10px;
+            max-width: 40vw;
+            max-height: 40vw;
+        }
     }
 }
 
@@ -125,19 +126,18 @@ a:visited {
     height: auto;
     display: block;
     position: relative;
-    // z index determines order of image layering
+    border-radius: 50px;
     z-index: 0;
-}
-// overlaying a graphic over main image,making it slightly wider than main image (by changing main to 95%) and at a slight angle using transform and rotate
-.about-me-image__overlay {
-    position: absolute;
-    bottom: 0;
-    right: 10;
-    width: 100%;
-    height: auto;
-    z-index: 1;
-    transform: rotate(190deg);
-    opacity: 0.75;
+    &__overlay {
+        position: absolute;
+        bottom: 0;
+        right: 10;
+        width: 100%;
+        height: auto;
+        z-index: 1;
+        transform: rotate(190deg);
+        opacity: 0.75;
+    }
 }
 
 .skills {

@@ -9,7 +9,7 @@ $lg: 769px; // desktop
     }
 }
 @mixin tablet {
-    @media only screen and (min-width: $s + 1px) and (max-width: $m) {
+    @media only screen and (min-width: ($s + 1px)) and (max-width: $m) {
         @content;
     }
 }
@@ -19,11 +19,3 @@ $lg: 769px; // desktop
         @content;
     }
 }
-
-//or
-//for desktops do not display any content labelled as mobile-only
-// @media (min-width: 1728px) {
-//     .mobile-only {
-//         display: none;
-//     }
-// }
