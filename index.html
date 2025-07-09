@@ -1,171 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- link to set up animations -->
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
-        <!-- link to google font -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
             rel="stylesheet"
         />
-        <!-- link to css stylesheet -->
         <link rel="stylesheet" href="styles.css" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Ella's portfolio</title>
-        <!-- header -->
     </head>
     <body>
-        <div
-            title="dark purple banner segregating text"
-            class="banner-dark"
-        ></div>
-        <!-- navigation bar only for desktop -->
-        <nav class="navigation-bar desktop-only">
-            <a href="">Home</a>
-            <a href="#aboutMe">About Me</a>
-            <a href="#projectSection">Projects</a>
-            <a class="navigation-bar__touch" href="#emailLink">Get in Touch!</a>
-        </nav>
-        <!-- header intro with introduction -->
-        <h3 class="tagline animate__animated animate__bounceIn">
-            &#128075; Hey! Welcome to my project portfolio!
-        </h3>
-        <div title="purple banner segregating text" class="banner-medium"></div>
-        <header class="header1">
-            <img
-                class="header1__title--img desktop-only animate__animated animate__fadeInLeft"
-                src="/images/latop-image.jpg"
-                alt="desktop only image of a purple and pink laptop"
-            />
-
-            <h1
-                class="header1__title--header animate__animated animate__fadeInRight"
-            >
-                My name is Ella, I'm a Junior Software Developer based in the
-                UK.
-            </h1>
-        </header>
-        <main>
-            <!-- about me header central on page -->
-            <section class="about-me-section" id="aboutMe">
-                <h2
-                    class="about-me-section__content about-me-section__content--header"
-                >
-                    About me
-                </h2>
-                <!-- <div class="about-me-section__content about-me-section-row"> -->
-                <!-- image of self central -->
-                <div class="about-me-section__content--container">
-                    <img
-                        class="about-me-image"
-                        src="/images/me.jpeg"
-                        alt="photo of me on a boat in malta"
-                    />
-                    <img
-                        class="about-me-image__overlay"
-                        src="/images/squiggle.png"
-                        alt="purple squiggle overlayed over main
-            image of author"
-                    />
-                </div>
-                <p
-                    class="about-me-section__content about-me-section__content--p about-me-section-p"
-                >
-                    <br /><br />
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Morbi justo metus, ornare at elementum in, tristique vitae
-                    augue. Curabitur rhoncus urna ligula, nec egestas eros
-                    lacinia id. Cras scelerisque in ante et finibus. Aenean id
-                    felis ipsum. Cras id velit egestas, venenatis tortor vitae,
-                    vulputate mauris. Mauris vel scelerisque felis. Phasellus
-                    accumsan massa nec tincidunt consequat.
-                    <br />Sed imperdiet, ante ut auctor imperdiet, neque lacus
-                    blandit elit, eget sodales ex quam et leo. Maecenas non
-                    augue nec eros gravida rutrum. Aenean vel risus nisl. Nulla
-                    condimentum leo sit amet consectetur hendrerit. Nunc eros
-                    sem, lobortis dictum pretium vel, elementum in nibh.
-                    Suspendisse eget pellentesque diam. Aliquam justo neque,
-                    imperdiet molestie varius nec, auctor sodales justo. Sed nec
-                    odio eget sem porttitor suscipit.
-                </p>
-            </section>
+        <div class="page-content">
             <div
                 title="dark purple banner segregating text"
+                class="banner-dark"
+            ></div>
+            <!-- navigation bar only for desktop -->
+            <nav class="navigation-bar desktop-only">
+                <a href="">Home</a>
+                <a href="#aboutMe">About Me</a>
+                <a href="#projectSection">Projects</a>
+                <a class="navigation-bar__touch" href="#emailLink"
+                    >Get in Touch!</a
+                >
+            </nav>
+            <!-- header intro with introduction -->
+            <h3 class="tagline animate__animated animate__bounceIn">
+                &#128075; Hey! Welcome to my project portfolio!
+            </h3>
+            <div
+                title="purple banner segregating text"
                 class="banner-medium"
             ></div>
-            <!--technical skills header  -->
-            <!-- intro to technical skills -->
-            <section class="skills">
-                <h2 class="skills__content skills__content--header">
-                    Technical Skills
-                </h2>
-                <p class="skills__content skills__content--p">
-                    Although coding is a completely new challenge to me as of
-                    right now, within the next 8 weeks I will become proficient
-                    in the following languages. Keep an eye on my GitHub
-                    repository to see my progress! (linked at the bottom of my
-                    portfolio)
-                </p>
-                <!-- put into scss -->
+            <header class="header1">
                 <img
-                    class="skills__content skills__content--image"
-                    src="/images/SkillIcons.png"
-                    alt="all language icons"
+                    class="header1__title--img desktop-only animate__animated animate__fadeInLeft"
+                    src="/images/latop-image.jpg"
+                    alt="desktop only image of a purple and pink laptop"
                 />
-            </section>
-            <section class="projects" id="projectSection">
-                <!-- projects -->
-                <h2 class="projects__header">My Projects</h2>
-                <p class="projects__header--p">
-                    Here is where the project section will be. And this is where
-                    the introduction to those projects will be. Currently all
-                    these links take you to my GitHub page, which is where I
-                    will add the projects as I complete them!
-                </p>
-                <div class="project-container">
-                    <div class="project-box project1">
-                        <a href="https://github.com/elstarss">Project 1</a>
-                    </div>
-                    <div class="project-box project2">
-                        <a href="https://github.com/elstarss">Project 2</a>
-                    </div>
-                    <div class="project-box project3">
-                        <a href="https://github.com/elstarss">Project 3</a>
-                    </div>
-                    <div class="project-box project4">
-                        <a href="https://github.com/elstarss">Project 4</a>
-                    </div>
-                    <!-- space for 4 projects -->
-                </div>
-            </section>
-            <!-- intro to technical skills -->
-            <!-- graphics of languages -->
-        </main>
-        <!-- footer with links to github etc and email below -->
-        <footer>
-            <div class="footer" id="emailLink">
-                <p class="footer__content">
-                    Sent me an email @
-                    <a
-                        class="footer__content--email"
-                        href="mailto:ella55ball@gmail.com"
-                        >ella55ball@gmail.com</a
+
+                <h1
+                    class="header1__title--header animate__animated animate__fadeInRight"
+                >
+                    My name is Ella, I'm a Junior Software Developer based in
+                    the UK.
+                </h1>
+            </header>
+            <main>
+                <!-- about me header central on page -->
+                <section class="about-me-section" id="aboutMe">
+                    <h2
+                        class="about-me-section__content about-me-section__content--header"
                     >
-                    or connect with me on GitHub
-                    <a href="https://github.com/elstarss" target="_blank"
-                        ><img
-                            class="footer__content--github"
-                            src="/images/github-image.png"
-                            alt="github logo"
-                    /></a>
-                </p>
-            </div>
-        </footer>
+                        About me
+                    </h2>
+                    <!-- <div class="about-me-section__content about-me-section-row"> -->
+                    <!-- image of self central -->
+                    <div class="about-me-section__content--container">
+                        <img
+                            class="about-me-image"
+                            src="/images/me.jpeg"
+                            alt="photo of me on a boat in malta"
+                        />
+                        <img
+                            class="about-me-image__overlay"
+                            src="/images/squiggle.png"
+                            alt="purple squiggle overlayed over main
+            image of author"
+                        />
+                    </div>
+                    <p
+                        class="about-me-section__content about-me-section__content--p about-me-section-p"
+                    >
+                        <br /><br />
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Morbi justo metus, ornare at elementum in, tristique
+                        vitae augue. Curabitur rhoncus urna ligula, nec egestas
+                        eros lacinia id. Cras scelerisque in ante et finibus.
+                        Aenean id felis ipsum. Cras id velit egestas, venenatis
+                        tortor vitae, vulputate mauris. Mauris vel scelerisque
+                        felis. Phasellus accumsan massa nec tincidunt consequat.
+                        <br />Sed imperdiet, ante ut auctor imperdiet, neque
+                        lacus blandit elit, eget sodales ex quam et leo.
+                        Maecenas non augue nec eros gravida rutrum. Aenean vel
+                        risus nisl. Nulla condimentum leo sit amet consectetur
+                        hendrerit. Nunc eros sem, lobortis dictum pretium vel,
+                        elementum in nibh. Suspendisse eget pellentesque diam.
+                        Aliquam justo neque, imperdiet molestie varius nec,
+                        auctor sodales justo. Sed nec odio eget sem porttitor
+                        suscipit.
+                    </p>
+                </section>
+                <div
+                    title="dark purple banner segregating text"
+                    class="banner-medium"
+                ></div>
+                <!--technical skills header  -->
+                <!-- intro to technical skills -->
+                <section class="skills">
+                    <h2 class="skills__header">Technical Skills</h2>
+                    <p class="skills__p">
+                        Although coding is a completely new challenge to me as
+                        of right now, within the next 8 weeks I will become
+                        proficient in the following languages. Keep an eye on my
+                        GitHub repository to see my progress! (linked at the
+                        bottom of my portfolio)
+                    </p>
+                    <!-- put into scss -->
+                    <img
+                        class="skills__image"
+                        src="/images/SkillIcons.png"
+                        alt="all language icons"
+                    />
+                </section>
+                <section class="projects" id="projectSection">
+                    <!-- projects -->
+                    <h2 class="projects__header">My Projects</h2>
+                    <p class="projects__header--p">
+                        Here is where the project section will be. And this is
+                        where the introduction to those projects will be.
+                        Currently all these links take you to my GitHub page,
+                        which is where I will add the projects as I complete
+                        them!
+                    </p>
+                    <div class="project-container">
+                        <div class="project-box project1">
+                            <a href="https://github.com/elstarss">Project 1</a>
+                        </div>
+                        <div class="project-box project2">
+                            <a href="https://github.com/elstarss">Project 2</a>
+                        </div>
+                        <div class="project-box project3">
+                            <a href="https://github.com/elstarss">Project 3</a>
+                        </div>
+                        <div class="project-box project4">
+                            <a href="https://github.com/elstarss">Project 4</a>
+                        </div>
+                        <!-- space for 4 projects -->
+                    </div>
+                </section>
+            </main>
+
+            <!-- footer with links to github etc and email below -->
+            <footer>
+                <div class="footer" id="emailLink">
+                    <p class="footer__content">
+                        Sent me an email @
+                        <a
+                            class="footer__content--email"
+                            href="mailto:ella55ball@gmail.com"
+                            >ella55ball@gmail.com</a
+                        >
+                        or connect with me on GitHub
+                        <a href="https://github.com/elstarss" target="_blank"
+                            ><img
+                                class="footer__content--github"
+                                src="/images/github-image.png"
+                                alt="github logo"
+                        /></a>
+                    </p>
+                </div>
+            </footer>
+        </div>
     </body>
 </html>

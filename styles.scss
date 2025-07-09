@@ -19,6 +19,13 @@ a:link {
 a:visited {
     color: sizing.$link-visited;
 }
+.page-content {
+    width: 90vw;
+    border: solid 3px sizing.$banner-dark;
+    margin-left: 4vw;
+    margin-right: 5vw;
+    // padding: 5px;
+}
 .banner-dark {
     width: 100%;
     height: 3vw;
@@ -51,11 +58,14 @@ a:visited {
 //styling header, image displayed only on desktop versions
 .header1 {
     display: flex;
-    margin-top: 6vw;
+    width: auto;
+    margin-top: 4vw;
     margin-left: 6vw;
     justify-content: center;
-    font-size: sizing.$font-xxl;
+    font-size: sizing.$font-xl;
     &__title--img {
+        width: 360px;
+        height: 400px;
         animation-duration: 3s;
         @include media-queries.mobile {
             display: none;
@@ -67,6 +77,9 @@ a:visited {
     &__title--header {
         animation-duration: 3s;
     }
+}
+h1 {
+    margin: 10px;
 }
 // styling about me section, on mobiles the content is displayed in a column, on desktops the content is displayed in a row
 .about-me-section {
@@ -101,11 +114,13 @@ a:visited {
 
         &--p {
             grid-area: paragraph;
+            margin-top: 0;
 
             @include media-queries.desktop {
                 grid-area: content;
                 align-self: center;
                 max-width: 70vw;
+                margin: 16px;
             }
         }
 
@@ -126,7 +141,7 @@ a:visited {
     height: auto;
     display: block;
     position: relative;
-    border-radius: 50px;
+    border-radius: 10px;
     z-index: 0;
     &__overlay {
         position: absolute;
@@ -147,13 +162,13 @@ a:visited {
     margin-top: 10vw;
     margin-bottom: 10vw;
 
-    &__content--image {
+    &__image {
         max-width: 80%;
         height: auto;
+    }
 
-        &__content--p {
-            max-width: 60vw;
-        }
+    &__p {
+        width: 90%;
     }
 }
 
@@ -166,9 +181,10 @@ a:visited {
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-    &__header {
         font-size: sizing.$font-xxl;
+        &--p {
+            width: 90%;
+        }
     }
 }
 .project-container {
