@@ -54,7 +54,6 @@ a:visited {
   font-size: 2rem;
 }
 .header1__title--img {
-  width: auto;
   animation-duration: 3s;
 }
 @media only screen and (max-width: 600px) {
@@ -121,9 +120,9 @@ a:visited {
   height: auto;
   display: block;
   position: relative;
+  border-radius: 50px;
   z-index: 0;
 }
-
 .about-me-image__overlay {
   position: absolute;
   bottom: 0;
@@ -198,3 +197,5 @@ a:visited {
   align-self: center;
   opacity: 0.5;
 }
+
+/*# sourceMappingURL=styles.css.map */
