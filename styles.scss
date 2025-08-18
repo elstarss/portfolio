@@ -94,6 +94,12 @@ a:visited {
     &__title--header {
         animation-duration: 3s;
         align-content: center;
+        @include media-queries.mobile {
+            display: none;
+        }
+        @include media-queries.tablet {
+            display: none;
+        }
     }
 }
 h1 {
@@ -237,8 +243,8 @@ h1 {
     justify-content: center;
     @include media-queries.mobile {
         font-size: sizing.$font-sm;
-        height: 200px;
-        width: 200px;
+        height: 150px;
+        width: 150px;
     }
     &__container {
         padding: 8vw;

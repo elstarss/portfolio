@@ -99,6 +99,16 @@ a:visited {
   animation-duration: 3s;
   align-content: center;
 }
+@media only screen and (max-width: 600px) {
+  .header1__title--header {
+    display: none;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 792px) {
+  .header1__title--header {
+    display: none;
+  }
+}
 
 h1 {
   margin: 10px;
@@ -239,8 +249,8 @@ h1 {
 @media only screen and (max-width: 600px) {
   .project-box {
     font-size: 0.875rem;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
   }
 }
 .project-box__container {
