@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="styles.css" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Ella's portfolio</title>
+        <title id="home">Ella's portfolio</title>
     </head>
     <body>
         <div class="page-content">
@@ -22,21 +22,27 @@
                 title="dark purple banner segregating text"
                 class="banner-dark"
             ></div>
-            <nav class="navigation-bar desktop-only">
-                <a href="">Home</a>
-                <a href="#aboutMe">About Me</a>
-                <a href="#projectSection">Projects</a>
-                <a class="navigation-bar__touch" href="#emailLink"
-                    >Get in Touch!</a
-                >
+            <nav class="navbar" data-component="navbar">
+                <ul class="navbar__menu" role="menubar">
+                    <li class="navigation-bar__menu-item">
+                        <a href="#home" role="menuitem">Home</a>
+                    </li>
+                    <li class="navigation-bar__menu-item">
+                        <a href="#aboutMe" role="menuitem">About Me</a>
+                    </li>
+                    <li class="navigation-bar__menu-item">
+                        <a href="#projectSection" role="menuitem">Projects</a>
+                    </li>
+                    <li class="navigation-bar__menu-item">
+                        <a
+                            class="navigation-bar__touch"
+                            href="#emailLink"
+                            role="menuitem"
+                            >Get in Touch!</a
+                        >
+                    </li>
+                </ul>
             </nav>
-            <h3 class="tagline animate__animated animate__bounceIn">
-                &#128075; Hey! Welcome to my project portfolio!
-            </h3>
-            <div
-                title="purple banner segregating text"
-                class="banner-medium"
-            ></div>
             <header class="header1">
                 <img
                     class="header1__title--img desktop-only animate__animated animate__fadeInLeft"
@@ -51,6 +57,10 @@
                     the UK.
                 </h1>
             </header>
+            <div
+                title="purple banner segregating text"
+                class="banner-medium"
+            ></div>
             <main>
                 <section class="about-me-section" id="aboutMe">
                     <h2

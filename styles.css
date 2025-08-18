@@ -1,4 +1,10 @@
 @import "animate.css/animate.min.css";
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: #053814 #ffffff;
+  scrollbar-width: thin;
+}
+
 body {
   background-color: rgb(172, 128, 180);
   font-family: "Roboto-Mono", monospace;
@@ -26,31 +32,33 @@ a:visited {
 }
 
 .banner-dark {
+  margin-top: 50px;
   width: 100%;
   height: 3vw;
   background-color: rgb(62, 27, 79);
 }
 
-.navigation-bar {
+.navbar {
+  width: 100%;
+  padding: 15px;
   display: flex;
-  font-size: 1rem;
-  margin: 3vw;
-  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 4px 3px rgba(46, 9, 61, 0.7);
+  background: rgba(84, 16, 110, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  backdrop-filter: blur(28px);
 }
-.navigation-bar__touch {
-  border: rgb(216, 207, 216) dashed 3px;
-}
-@media only screen and (max-width: 600px) {
-  .navigation-bar {
-    display: none;
-  }
-}
-
-.tagline {
+.navbar__menu {
   display: flex;
-  justify-content: center;
-  font-size: 1rem;
-  animation-duration: 20s;
+  justify-content: space-around;
+  width: 100%;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .banner-medium {
@@ -62,12 +70,11 @@ a:visited {
 .header1 {
   display: flex;
   width: auto;
-  margin-top: 4vw;
-  margin-left: 6vw;
   justify-content: center;
   font-size: 1.5rem;
 }
 .header1__title--img {
+  margin-left: 4vw;
   width: 360px;
   height: 400px;
   animation-duration: 3s;
@@ -84,6 +91,7 @@ a:visited {
 }
 .header1__title--header {
   animation-duration: 3s;
+  align-content: center;
 }
 
 h1 {
@@ -242,5 +250,3 @@ h1 {
   align-self: center;
   opacity: 0.5;
 }
-
-/*# sourceMappingURL=styles.css.map */
