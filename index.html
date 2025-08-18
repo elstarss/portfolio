@@ -14,13 +14,14 @@
         <link rel="stylesheet" href="styles.css" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title id="home">Ella's portfolio</title>
+        <title>Ella's portfolio</title>
     </head>
     <body>
         <div class="page-content">
             <div
                 title="dark purple banner segregating text"
                 class="banner-dark"
+                id="home"
             ></div>
             <nav class="navbar" data-component="navbar">
                 <ul class="navbar__menu" role="menubar">
@@ -60,9 +61,10 @@
             <div
                 title="purple banner segregating text"
                 class="banner-medium"
+                id="aboutMe"
             ></div>
             <main>
-                <section class="about-me-section" id="aboutMe">
+                <section class="about-me-section">
                     <h2
                         class="about-me-section__content about-me-section__content--header"
                     >
@@ -98,10 +100,6 @@
                         hoop or counting stitches on a crochet project &#x1F5F2;
                     </p>
                 </section>
-                <div
-                    title="dark purple banner segregating text"
-                    class="banner-medium"
-                ></div>
                 <section class="skills">
                     <h2 class="skills__header">Technical Skills</h2>
                     <p class="skills__p">
@@ -117,7 +115,12 @@
                         alt="all language icons"
                     />
                 </section>
-                <section class="projects" id="projectSection">
+                <div
+                    title="dark purple banner segregating text"
+                    class="banner-medium"
+                    id="projectSection"
+                ></div>
+                <section class="projects">
                     <h2 class="projects__header">My Projects</h2>
                     <p class="projects__header--p">
                         Here is where the project section will be. And this is
@@ -127,29 +130,68 @@
                         them!
                     </p>
                     <div class="project-container">
-                        <div class="project-box project-box__1 project1">
+                        <div class="project-box project-box__container">
                             <a
-                                class="project-box__1--a"
+                                class="project-box__link"
                                 href="https://github.com/elstarss/portfolio"
-                                >Project 1</a
                             >
-                            <p class="project-box__1--p">
+                                Project 1
+                            </a>
+                            <p class="project-box__p">
                                 You're looking at it! My first adventure into
-                                HTML/CSS/SCC is right here for you to see. Feel
+                                HTML/CSS/SCSS is right here for you to see. Feel
                                 free to dive into the code in my public
                                 repository linked above, and take a look at the
                                 commit history to see how I have developed as a
                                 programmer alongside my portfolio.
                             </p>
+                            <img
+                                src="./images/portfolio.png"
+                                alt="portfolio title card, purple with laptop"
+                                class="project-box__img"
+                            />
                         </div>
-                        <div class="project-box project2">
-                            <a href="https://github.com/elstarss">Project 2</a>
+
+                        <div class="project-box project-box__container">
+                            <a
+                                href="https://github.com/elstarss"
+                                class="project-box__link"
+                            >
+                                Project 2
+                            </a>
+                            <img
+                                src="./images/pizella-title.png"
+                                alt="purple pizza with pizella written at the top"
+                                class="project-box__img"
+                            />
                         </div>
-                        <div class="project-box project3">
-                            <a href="https://github.com/elstarss">Project 3</a>
+
+                        <div class="project-box project-box__container">
+                            <a
+                                href="https://github.com/elstarss"
+                                class="project-box__link"
+                            >
+                                Project 3
+                            </a>
+                            <img
+                                src="./images/snap-title.png"
+                                alt="purple square with playing cards and the name snap"
+                                class="project-box__img"
+                            />
                         </div>
-                        <div class="project-box project4">
-                            <a href="https://github.com/elstarss">Project 4</a>
+
+                        <div class="project-box project-box__container">
+                            <a
+                                href="https://github.com/elstarss"
+                                class="project-box__link"
+                            >
+                                Project 4
+                            </a>
+                            <img
+                                src="./images/ecoshoplogo.png"
+                                alt="eco-collective logo"
+                                class="project-box__img"
+                            />
                         </div>
                     </div>
                 </section>

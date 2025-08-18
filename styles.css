@@ -103,7 +103,7 @@ h1 {
   grid-template-columns: 1fr;
   grid-template-areas: "header" "image" "paragraph";
   gap: 1rem;
-  padding: 2rem;
+  padding: 3rem 2rem 0rem 2rem;
 }
 @media only screen and (min-width: 769px) {
   .about-me-section {
@@ -174,7 +174,6 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5vw;
   margin-bottom: 8vw;
 }
 .skills__header {
@@ -213,24 +212,50 @@ h1 {
   justify-content: space-evenly;
   padding: 2vw;
 }
+@media only screen and (max-width: 600px) {
+  .project-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
 .project-box {
   border: 3px dashed rgb(229, 211, 238);
   display: flex;
-  position: relative;
   align-items: center;
-  justify-content: center;
-  text-align: center;
   font-size: 0.75rem;
   padding: 2px;
-}
-.project-box__1 {
   flex-direction: column;
+  display: inline-block;
 }
-@media only screen and (min-width: 769px) {
-  .project-box__1 {
-    font-size: 1.25rem;
-    padding: 6px;
+.project-box__container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.project-box__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+.project-box__container:hover .project-box__img {
+  opacity: 0;
+  pointer-events: none;
+}
+.project-box__link, .project-box__p {
+  position: relative;
+  z-index: 0;
+}
+@media only screen and (max-width: 600px) {
+  .project-box {
+    height: 80%;
+    width: 80%;
   }
 }
 
