@@ -60,6 +60,10 @@ a:visited {
         list-style: none;
         margin: 0;
         padding: 0;
+        @include media-queries.mobile {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
     }
 }
 
@@ -185,10 +189,12 @@ h1 {
     &__image {
         max-width: 80%;
         height: auto;
+        margin-top: 2vw;
     }
 
     &__p {
         width: 90%;
+        margin-top: 0;
     }
 }
 
@@ -224,17 +230,21 @@ h1 {
 }
 .project-box {
     border: 3px dashed sizing.$project-containers;
-    display: flex;
     align-items: center;
-    font-size: sizing.$font-xs;
+    font-size: sizing.$font-base;
     padding: 2px;
-    flex-direction: column;
-    display: inline-block;
 
+    justify-content: center;
+    @include media-queries.mobile {
+        font-size: sizing.$font-sm;
+        height: 200px;
+        width: 200px;
+    }
     &__container {
+        padding: 8vw;
         position: relative;
         display: inline-block;
-        overflow: hidden;
+        text-align: center;
     }
 
     &__img {
@@ -244,6 +254,7 @@ h1 {
         width: 100%;
         height: 100%;
         z-index: 1;
+        object-fit: cover;
         transition: opacity 0.3s ease;
     }
 
@@ -256,10 +267,6 @@ h1 {
     &__p {
         position: relative;
         z-index: 0;
-    }
-    @include media-queries.mobile {
-        height: 80%;
-        width: 80%;
     }
 }
 
