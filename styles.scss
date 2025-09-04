@@ -229,8 +229,8 @@ h1 {
     justify-content: center;
     @include media-queries.mobile {
         font-size: sizing.$font-xs;
-        height: 150px;
-        width: 150px;
+        height: 160px;
+        width: 160px;
     }
     @include media-queries.desktop {
         font-size: large;
