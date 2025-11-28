@@ -1,13 +1,14 @@
+import { CreatureStats } from './CreatureStats.js';
 class CreatureState {
     #name = '';
-    #age = 0;
-    #hungerLevel = 8;
-    #maxHunger = 10;
-    #cleanLevel = 8;
-    #maxClean = 10;
-    #joyLevel = 5;
-    #maxJoy = 10;
-    #friendshipLevel = 0;
+    #stats = {
+        [CreatureStats.HUNGER]: { value: 8, max: 10 },
+        [CreatureStats.CLEAN]: { value: 8, max: 10 },
+        [CreatureStats.JOY]: { value: 5, max: 10 },
+        [CreatureStats.FRIENDSHIP]: { value: 0, max: Infinity },
+        [CreatureStats.AGE]: { value: 0, max: Infinity }
+    };
+    emitter = new Phaser.Events.EventEmitter();
 
     static getInstance() {
         if (!CreatureState.instance) {
@@ -15,64 +16,40 @@ class CreatureState {
         }
         return CreatureState.instance;
     }
-
+    _setStat(stat, change) {
+        const s = this.#stats[stat];
+        s.value = Phaser.Math.Clamp(s.value + change, 0, s.max);
+        this.emitter.emit('statChanged', stat, s.value);
+    }
+    getStat(stat) {
+        return this.#stats[stat].value;
+    }
+    getMaxStat(stat) {
+        return this.#stats[stat].max;
+    }
     getName() {
         return this.#name;
     }
     setName(newName) {
         this.#name = newName;
     }
-    getAge() {
-        return this.#age;
+    feed(amount = 1) {
+        this._setStat(CreatureStats.HUNGER, amount);
     }
-    setAge(changeValue) {
-        this.#age += changeValue;
+    play(amount = 1) {
+        this._setStat(CreatureStats.JOY, amount);
     }
-    getHungerLevel() {
-        return this.#hungerLevel;
+    clean(amount = 1) {
+        this._setStat(CreatureStats.CLEAN, amount);
     }
-    setHungerLevel(changeValue) {
-        if (changeValue > 0 && this.#hungerLevel >= this.#maxHunger) {
-            return;
-        } else if (changeValue < 0 && this.#hungerLevel == 0) return;
-        else this.#hungerLevel += changeValue;
-    }
-    getMaxHunger() {
-        return this.#maxHunger;
-    }
-    getCleanLevel() {
-        return this.#cleanLevel;
-    }
-    setCleanLevel(changeValue) {
-        this.#cleanLevel += changeValue;
-    }
-    getMaxClean() {
-        return this.#maxClean;
-    }
-    getJoyLevel() {
-        return this.#joyLevel;
-    }
-    setJoyLevel(changeValue) {
-        this.#joyLevel += changeValue;
-    }
-    getMaxJoy() {
-        return this.#maxJoy;
-    }
-    getFriendshipLevel() {
-        return this.#friendshipLevel;
-    }
-    setFriendshipLevel(changeValue) {
-        this.#friendshipLevel += changeValue;
+    age(amount = 1) {
+        this._setStat(CreatureStats.AGE, amount);
     }
 
     getAllCreatureStats() {
-        return {
-            age: this.#age,
-            hungerLevel: this.#hungerLevel,
-            cleanLevel: this.#cleanLevel,
-            friendshipLevel: this.#friendshipLevel,
-            joyLevel: this.#joyLevel
-        };
+        return Object.fromEntries(
+            Object.entries(this.#stats).map(([key, stat]) => [key, stat.value])
+        );
     }
 }
 
