@@ -5,7 +5,6 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
         this.setInteractive();
         this.setCollideWorldBounds(true);
-        console.log('creature');
 
         this.body.velocity.x = 50;
         this.body.velocity.y = 50;

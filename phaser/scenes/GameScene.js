@@ -1,7 +1,5 @@
 import { Creature } from '../Creature.js';
-import { config } from '../config.js';
 import { creatureState } from '../State/CreatureState.js';
-
 export class GameScene extends Phaser.Scene {
     creature;
     constructor() {
@@ -23,9 +21,7 @@ export class GameScene extends Phaser.Scene {
 
         // things i might want to use
         const emitter = new Phaser.Events.EventEmitter();
-        // timer
-        // timer.paused = true;
-        // timer.paused = false
+
         console.log(creatureState.getAllCreatureStats());
     }
 

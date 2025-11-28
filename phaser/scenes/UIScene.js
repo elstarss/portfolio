@@ -1,6 +1,7 @@
 import { creatureState } from '../State/CreatureState.js';
 import UIButton from '../UI/UIButton.js';
 import UIBar from '../UI/UIBar.js';
+import { UIHandlers } from '../UI/UIHandler.js';
 
 export class UIScene extends Phaser.Scene {
     hungerBar;
@@ -13,23 +14,22 @@ export class UIScene extends Phaser.Scene {
 
     create() {
         const buttonData = [
-            { x: 100, y: 150, texture: 'feed-ui', effect: 'feed' },
-            { x: 100, y: 250, texture: 'pet-ui', effect: 'pet' },
-            { x: 100, y: 350, texture: 'shop-ui', effect: 'shop' },
-            { x: 600, y: 350, texture: 'nextDay-ui', effect: 'next-day' }
+            { x: 100, y: 150, texture: 'feed-ui', actionKey: 'feed' },
+            { x: 100, y: 250, texture: 'pet-ui', actionKey: 'pet' },
+            { x: 100, y: 350, texture: 'shop-ui', actionKey: 'shop' },
+            { x: 600, y: 350, texture: 'nextDay-ui', actionKey: 'next-day' }
         ];
         this.buttons = buttonData.map((data) => {
-            const button = new UIButton(
+            const btn = new UIButton(
                 this,
                 data.x,
                 data.y,
                 data.texture,
                 0,
-                data.effect
+                data.actionKey
             );
-
-            button.on('pointerdown', button.interact, button);
-            return button;
+            btn.on('pointerdown', () => UIHandlers[btn.actionKey](this));
+            return btn;
         });
 
         // status bars
@@ -78,7 +78,7 @@ export class UIScene extends Phaser.Scene {
     }
 
     update() {
-        // will update every frame
+        // updates every frame- might want to switch to event based system
         this.UIBars.forEach((bar) => bar.update());
     }
 }
