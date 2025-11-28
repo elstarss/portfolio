@@ -3,9 +3,13 @@ import { GameScene } from './scenes/GameScene.js';
 
 export const config = {
     type: Phaser.AUTO,
-    width: 500,
-    height: 500,
     parent: 'game-container',
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 800,
+        height: 500
+    },
     backgroundColor: '#7f3c99ff',
     physics: {
         default: 'arcade',

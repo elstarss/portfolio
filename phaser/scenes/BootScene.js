@@ -4,8 +4,16 @@ export default class BootScene extends Phaser.Scene {
     }
 
     preload() {
-        // // Load assets here
-        // this.load.image('phaser-logo', 'assets/phaser-logo.png');
+        this.load.spritesheet('rolly', 'phaser/assets/rolly-ss.png', {
+            frameWidth: 128,
+            frameHeight: 128
+        });
+        this.load.image('bg', 'phaser/assets/bg.png');
+        this.add.image('wheely', 'phaser/assets/wheely.png');
+        this.load.image('feed-ui', 'phaser/assets/feed-ui.png');
+        this.load.image('pet-ui', 'phaser/assets/pet-ui.png');
+        this.load.image('nextDay-ui', 'phaser/assets/next-day-ui.png');
+        this.load.image('shop-ui', 'phaser/assets/shop-ui.png');
     }
 
     create() {

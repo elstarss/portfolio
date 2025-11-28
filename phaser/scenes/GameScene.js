@@ -1,12 +1,33 @@
+import { Creature } from '../Creature.js';
+import { config } from '../config.js';
+import { creatureState } from '../State/CreatureState.js';
+
 export class GameScene extends Phaser.Scene {
+    creature;
     constructor() {
         super('GameScene');
     }
     create() {
-        this.add
-            .text(200, 300, 'Hello Phaser!', { fontSize: '32px', fill: '#fff' })
-            .setOrigin(0.5);
+        this.scene.launch('UIScene');
 
-        console.log('loaded game scene');
+        // bg
+        const background = this.add
+            .image(0, 0, 'bg')
+            .setOrigin(0)
+            .setDisplaySize(this.scale.width, this.scale.height);
+        background.setDepth(0);
+
+        // creature
+        this.creature = new Creature(this, 200, 200, 'rolly', 0);
+        this.creature.setDepth(1);
+
+        // things i might want to use
+        const emitter = new Phaser.Events.EventEmitter();
+        // timer
+        // timer.paused = true;
+        // timer.paused = false
+        console.log(creatureState.getAllCreatureStats());
     }
+
+    update() {}
 }
