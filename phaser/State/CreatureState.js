@@ -1,12 +1,13 @@
 import { CreatureStats } from './CreatureStats.js';
 class CreatureState {
-    #name = '';
+    #name = 'Creature';
     #stats = {
         [CreatureStats.HUNGER]: { value: 8, max: 10 },
         [CreatureStats.CLEAN]: { value: 8, max: 10 },
         [CreatureStats.JOY]: { value: 5, max: 10 },
         [CreatureStats.FRIENDSHIP]: { value: 0, max: Infinity },
-        [CreatureStats.AGE]: { value: 0, max: Infinity }
+        [CreatureStats.AGE]: { value: 0, max: Infinity },
+        [CreatureStats.COINS]: { value: 5, max: Infinity }
     };
     emitter = new Phaser.Events.EventEmitter();
 
@@ -33,6 +34,8 @@ class CreatureState {
     setName(newName) {
         this.#name = newName;
     }
+
+    // safe functions to be called
     feed(amount = 1) {
         this._setStat(CreatureStats.HUNGER, amount);
     }
@@ -45,7 +48,23 @@ class CreatureState {
     age(amount = 1) {
         this._setStat(CreatureStats.AGE, amount);
     }
-
+    decreaseStatsForNextDay(
+        statsToDecrease = [
+            CreatureStats.HUNGER,
+            CreatureStats.JOY,
+            CreatureStats.CLEAN
+        ]
+    ) {
+        for (let i = 0; i < statsToDecrease.length; i++) {
+            let randomNumber = Phaser.Math.Between(0, 5);
+            this._setStat(statsToDecrease[i], -randomNumber);
+        }
+    }
+    payDay() {
+        const wage = Phaser.Math.Between(1, 10);
+        console.log(`wage today is: ${wage}`);
+        this._setStat(CreatureStats.COINS, wage);
+    }
     getAllCreatureStats() {
         return Object.fromEntries(
             Object.entries(this.#stats).map(([key, stat]) => [key, stat.value])

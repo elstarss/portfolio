@@ -12,6 +12,11 @@ export default class WelcomeScene extends Phaser.Scene {
             .setOrigin(0)
             .setDisplaySize(this.scale.width, this.scale.height);
         background.setDepth(0);
+
+        const welcomeText =
+            "Welcome! Whilst you're on my portfolio there's a little creature here you can look after if you want!";
+
+        // start button
         this.startButton = new UIButton(this, 100, 100, 'start-ui', 0, 'start');
         this.startButton.on('pointerdown', () => this.scene.start('GameScene'));
     }

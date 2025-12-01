@@ -3,5 +3,6 @@ export const CreatureStats = Object.freeze({
     CLEAN: 'clean',
     JOY: 'joy',
     FRIENDSHIP: 'friendship',
-    AGE: 'age'
+    AGE: 'age',
+    COINS: 'coins'
 });
