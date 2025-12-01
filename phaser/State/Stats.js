@@ -9,6 +9,5 @@ export const CreatureStats = Object.freeze({
 
 export const PlayerStats = Object.freeze({
     COINS: 'coins',
-    HATS: 'hats',
-    w: 'fw'
+    NUMBEROFHATS: 'hats'
 });

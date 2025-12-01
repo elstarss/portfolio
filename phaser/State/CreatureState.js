@@ -1,5 +1,6 @@
 import { CreatureStats } from './Stats.js';
 import { EventBus } from '../Utilities/EventBus.js';
+import { playerState } from './PlayerState.js';
 class CreatureState {
     #name = 'Creature';
     #stats = {
@@ -16,13 +17,13 @@ class CreatureState {
         }
         return CreatureState.instance;
     }
-    _setStat(stat, change) {
+    setStat(stat, change) {
         const s = this.#stats[stat];
         s.value = Phaser.Math.Clamp(s.value + change, 0, s.max);
         EventBus.emit('creature:statChanged', stat, s.value);
+        console.log(`creature setStat: new ${stat} stat: ${s.value}`);
     }
     getStat(stat) {
-        console.log(stat);
         return this.#stats[stat].value;
     }
     getMaxStat(stat) {
@@ -35,18 +36,8 @@ class CreatureState {
         this.#name = newName;
     }
 
-    // safe functions to be called
-    feed(amount = 1) {
-        this._setStat(CreatureStats.HUNGER, amount);
-    }
-    play(amount = 1) {
-        this._setStat(CreatureStats.JOY, amount);
-    }
-    clean(amount = 1) {
-        this._setStat(CreatureStats.CLEAN, amount);
-    }
     age(amount = 1) {
-        this._setStat(CreatureStats.AGE, amount);
+        this.setStat(CreatureStats.AGE, amount);
     }
     decreaseStatsForNextDay(
         statsToDecrease = [
@@ -57,7 +48,7 @@ class CreatureState {
     ) {
         for (let i = 0; i < statsToDecrease.length; i++) {
             let randomNumber = Phaser.Math.Between(0, 5);
-            this._setStat(statsToDecrease[i], -randomNumber);
+            this.setStat(statsToDecrease[i], -randomNumber);
         }
     }
     getAllCreatureStats() {

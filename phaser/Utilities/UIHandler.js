@@ -1,13 +1,14 @@
 import { creatureState } from '../State/CreatureState.js';
-import { DayTransitionHandler } from '../Utilities/DayTransitionHandler.js';
+import { DayTransitionHandler } from './DayTransitionHandler.js';
+import { Actions, performAction } from './ActionHandler.js';
 
 export const UIHandlers = {
-    feed: () => creatureState.feed(),
-    pet: () => creatureState.play(),
+    feed: () => performAction(Actions.FEED),
+    pet: () => performAction(Actions.PLAY),
+    clean: () => performAction(Actions.CLEAN),
     'next-day': (scene) => {
         DayTransitionHandler.start(scene);
     },
-    clean: () => creatureState.clean(),
     shop: (scene) => {
         scene.scene.pause('GameScene');
         scene.scene.pause('UIScene');

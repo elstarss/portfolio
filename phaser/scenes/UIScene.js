@@ -1,7 +1,7 @@
 import { creatureState } from '../State/CreatureState.js';
 import UIButton from '../UI/UIButton.js';
 import UIBar from '../UI/UIBar.js';
-import { UIHandlers } from '../UI/UIHandler.js';
+import { UIHandlers } from '../Utilities/UIHandler.js';
 import { CreatureStats, PlayerStats } from '../State/Stats.js';
 import { playerState } from '../State/PlayerState.js';
 import { EventBus } from '../Utilities/EventBus.js';
