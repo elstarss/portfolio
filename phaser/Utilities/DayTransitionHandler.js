@@ -1,5 +1,6 @@
 import { creatureState } from '../State/CreatureState.js';
-import { CreatureStats } from '../State/CreatureStats.js';
+import { playerState } from '../State/PlayerState.js';
+import { CreatureStats } from '../State/Stats.js';
 
 export const DayTransitionHandler = {
     async start(scene) {
@@ -7,7 +8,7 @@ export const DayTransitionHandler = {
         await cameraFade(camera, 800);
         creatureState.age();
         creatureState.decreaseStatsForNextDay();
-        creatureState.payDay();
+        playerState.payDay();
         displayText(scene);
         await cameraFadeIn(camera, 800);
     }

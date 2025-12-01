@@ -1,4 +1,5 @@
-import { CreatureStats } from './CreatureStats.js';
+import { CreatureStats } from './Stats.js';
+import { EventBus } from '../Utilities/EventBus.js';
 class CreatureState {
     #name = 'Creature';
     #stats = {
@@ -6,10 +7,8 @@ class CreatureState {
         [CreatureStats.CLEAN]: { value: 8, max: 10 },
         [CreatureStats.JOY]: { value: 5, max: 10 },
         [CreatureStats.FRIENDSHIP]: { value: 0, max: Infinity },
-        [CreatureStats.AGE]: { value: 0, max: Infinity },
-        [CreatureStats.COINS]: { value: 5, max: Infinity }
+        [CreatureStats.AGE]: { value: 0, max: Infinity }
     };
-    emitter = new Phaser.Events.EventEmitter();
 
     static getInstance() {
         if (!CreatureState.instance) {
@@ -20,9 +19,10 @@ class CreatureState {
     _setStat(stat, change) {
         const s = this.#stats[stat];
         s.value = Phaser.Math.Clamp(s.value + change, 0, s.max);
-        this.emitter.emit('statChanged', stat, s.value);
+        EventBus.emit('creature:statChanged', stat, s.value);
     }
     getStat(stat) {
+        console.log(stat);
         return this.#stats[stat].value;
     }
     getMaxStat(stat) {
@@ -59,11 +59,6 @@ class CreatureState {
             let randomNumber = Phaser.Math.Between(0, 5);
             this._setStat(statsToDecrease[i], -randomNumber);
         }
-    }
-    payDay() {
-        const wage = Phaser.Math.Between(1, 10);
-        console.log(`wage today is: ${wage}`);
-        this._setStat(CreatureStats.COINS, wage);
     }
     getAllCreatureStats() {
         return Object.fromEntries(

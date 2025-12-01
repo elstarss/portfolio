@@ -9,7 +9,6 @@ export const UIHandlers = {
     },
     clean: () => creatureState.clean(),
     shop: (scene) => {
-        console.log('handling');
         scene.scene.pause('GameScene');
         scene.scene.pause('UIScene');
         scene.scene.launch('ShopScene');

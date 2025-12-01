@@ -2,7 +2,9 @@ import { creatureState } from '../State/CreatureState.js';
 import UIButton from '../UI/UIButton.js';
 import UIBar from '../UI/UIBar.js';
 import { UIHandlers } from '../UI/UIHandler.js';
-import { CreatureStats } from '../State/CreatureStats.js';
+import { CreatureStats, PlayerStats } from '../State/Stats.js';
+import { playerState } from '../State/PlayerState.js';
+import { EventBus } from '../Utilities/EventBus.js';
 
 export class UIScene extends Phaser.Scene {
     hungerBar;
@@ -75,9 +77,35 @@ export class UIScene extends Phaser.Scene {
             );
         });
 
-        creatureState.emitter.on('statChanged', (stat, value) => {
+        // money ui
+        this.text = this.add.text(
+            250,
+            100,
+            `coins: ${playerState.getStat(PlayerStats.COINS)}`,
+            {
+                fontFamily: 'MS PGothic',
+                fontSize: 20,
+                color: '#5f2199ff'
+            }
+        );
+
+        this.handleStatChange = (stat, value) => {
             const bar = this.UIBars.find((b) => b.statName === stat);
             if (bar) bar.targetValue = value;
+
+            if (stat === PlayerStats.COINS) {
+                this.text.setText(`coins: ${value}`);
+            }
+        };
+
+        this.handleStatChange = this.handleStatChange.bind(this);
+        EventBus.on('creature:statChanged', this.handleStatChange);
+        EventBus.on('player:statChanged', this.handleStatChange);
+
+        // cleanup listeners when scene stops
+        this.events.once('shutdown', () => {
+            EventBus.off('player:statChanged', this.handleStatChange);
+            EventBus.off('creature:statChanged', this.handleStatChange);
         });
     }
 

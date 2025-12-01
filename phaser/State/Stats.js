@@ -6,3 +6,9 @@ export const CreatureStats = Object.freeze({
     AGE: 'age',
     COINS: 'coins'
 });
+
+export const PlayerStats = Object.freeze({
+    COINS: 'coins',
+    HATS: 'hats',
+    w: 'fw'
+});
