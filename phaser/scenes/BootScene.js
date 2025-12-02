@@ -20,12 +20,14 @@ export default class BootScene extends Phaser.Scene {
         this.load.image('start-ui', 'start-ui.png');
         this.load.image('home-ui', 'home-ui.png');
         this.load.image('clean-ui', 'clean-ui.png');
+        this.load.image('cancel-ui', 'cancel-ui.png');
 
         // icons
         this.load.setPath('phaser/assets/icons/');
         this.load.image('joy-icon', 'joy-icon.png');
         this.load.image('clean-icon', 'water-icon.png');
         this.load.image('food-icon', 'food-icon.png');
+        this.load.image('cookie', 'cookie.png');
 
         // shop
         this.load.setPath('phaser/assets/shop/');

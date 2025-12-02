@@ -6,22 +6,27 @@ export const Actions = {
     FEED: {
         stat: CreatureStats.HUNGER,
         cost: 1,
-        amount: +1
+        amount: +1,
+        requiresInteraction: true,
+        interactionScene: 'FeedScene'
     },
     CLEAN: {
         stat: CreatureStats.CLEAN,
         cost: 1,
-        amount: +1
+        amount: +1,
+        requiresInteraction: false
     },
     PLAY: {
         stat: CreatureStats.JOY,
         cost: 1,
-        amount: +1
+        amount: +1,
+        requiresInteraction: false
     }
 };
 
-export function performAction(action) {
-    const { stat, cost, amount } = action;
+export function performAction(scene, action) {
+    const { stat, cost, amount, requiresInteraction, interactionScene } =
+        action;
     const current = creatureState.getStat(stat);
     const max = creatureState.getMaxStat(stat);
 
@@ -38,6 +43,14 @@ export function performAction(action) {
     }
     // player has enough -> reduce coins
     playerState.setStat(PlayerStats.COINS, -cost);
+
+    if (requiresInteraction) {
+        scene.scene.sleep('GameScene');
+        scene.scene.sleep('UIScene');
+        scene.scene.launch(interactionScene, { action });
+        return true;
+    }
+
     // increase creature stat
     creatureState.setStat(stat, amount);
 

@@ -1,4 +1,4 @@
-import { Creature } from '../Creature.js';
+import { Creature } from '../sprites/Creature.js';
 import { creatureState } from '../State/CreatureState.js';
 export class GameScene extends Phaser.Scene {
     creature;

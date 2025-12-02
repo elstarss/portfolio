@@ -1,6 +1,6 @@
 import { creatureState } from '../State/CreatureState.js';
 
-export default class Button extends Phaser.Physics.Arcade.Sprite {
+export default class UIButton extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture, frame, effect) {
         super(scene, x, y, texture, frame);
         this.effect = effect;

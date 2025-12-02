@@ -306,3 +306,6 @@ h1 {
     height: 600px;
     margin: 0 auto; /* center it */
 }
+canvas {
+    pointer-events: auto !important;
+}
