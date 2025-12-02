@@ -18,11 +18,6 @@ export class GameScene extends Phaser.Scene {
         // creature
         this.creature = new Creature(this, 200, 200, 'rolly', 0);
         this.creature.setDepth(1);
-
-        // things i might want to use
-        const emitter = new Phaser.Events.EventEmitter();
-
-        console.log(creatureState.getAllCreatureStats());
     }
 
     update() {}

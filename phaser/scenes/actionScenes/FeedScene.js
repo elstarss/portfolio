@@ -32,12 +32,44 @@ export default class FeedScene extends Phaser.Scene {
             Phaser.Geom.Rectangle.Contains
         );
         this.input.setDraggable(food);
+        food.setDepth(2);
         this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
             gameObject.setPosition(dragX, dragY);
         });
 
-        this.input.on('dragstart', (pointer, gameObject) => {
-            console.log('dragstart fired for', gameObject.texture.key);
+        // this.input.on('dragstart', (pointer, gameObject) => {
+        //     console.log('dragstart fired for', gameObject.texture.key);
+        // });
+        // plate- drop zone
+        // Add drop zone (plate)
+        const zone = this.add.sprite(400, 300, 'cookie-plate');
+        zone.setDepth(1);
+        zone.setInteractive();
+        zone.input.dropZone = true;
+
+        // highlight drop zone if object in right area
+        this.input.on('dragenter', (pointer, gameObject, dropZone) => {
+            zone.setTint(0x88ff88);
+        });
+        // remove highlight if exits dropzone area
+        this.input.on('dragleave', (pointer, gameObject, dropZone) => {
+            zone.clearTint();
+        });
+
+        // snap object to dropzone when placed in correct area
+        this.input.on('drop', (pointer, gameObject, dropZone) => {
+            gameObject.x = dropZone.x;
+            gameObject.y = dropZone.y;
+            gameObject.input.enabled = false;
+            zone.clearTint();
+            this.completeAction();
+        });
+
+        // snap back to start if dropped outside zone
+        this.input.on('dragend', (pointer, gameObject, dropped) => {
+            if (!dropped) {
+                gameObject.setPosition(400, 200);
+            }
         });
 
         // return button
@@ -73,7 +105,7 @@ export default class FeedScene extends Phaser.Scene {
 
     endInteraction() {
         this.scene.stop();
-        this.scene.resume('GameScene');
-        this.scene.resume('UIScene');
+        this.scene.launch('GameScene');
+        this.scene.launch('UIScene');
     }
 }
