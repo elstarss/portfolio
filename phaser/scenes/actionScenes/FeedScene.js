@@ -71,7 +71,7 @@ export default class FeedScene extends Phaser.Scene {
         // return button
         const buttonData = [
             {
-                x: 550,
+                x: 700,
                 y: 400,
                 texture: 'cancel-ui',
                 actionKey: 'refundFeed',

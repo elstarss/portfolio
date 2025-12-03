@@ -7,7 +7,7 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
         this.setCollideWorldBounds(true);
 
         this.body.velocity.x = 50;
-        this.body.velocity.y = 50;
+        this.body.velocity.y = 0;
         this.body.setBounce(1);
     }
     freeze() {
@@ -31,5 +31,12 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
             Phaser.Math.Between(minV, maxV)
         );
     }
-    update() {}
+    update() {
+        const body = this.body;
+        if (body.velocity.x > 0) {
+            body.velocity.y = 0;
+        } else if (body.velocity.y > 0) {
+            body.velocity.x = 0;
+        }
+    }
 }

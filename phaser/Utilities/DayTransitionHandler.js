@@ -8,8 +8,8 @@ export const DayTransitionHandler = {
         await cameraFade(camera, 800);
         creatureState.age();
         creatureState.decreaseStatsForNextDay();
-        playerState.payDay();
-        displayText(scene);
+        const wage = playerState.payDay();
+        displayText(scene, wage);
         await cameraFadeIn(camera, 800);
     }
 };
@@ -21,14 +21,14 @@ function cameraFade(camera, duration) {
     });
 }
 
-function displayText(scene) {
+function displayText(scene, wage) {
     const text = scene.add
         .text(
             scene.scale.width / 2,
             scene.scale.height / 2,
             `${creatureState.getName()} is ${creatureState.getStat(
                 CreatureStats.AGE
-            )}`,
+            )} today! \n\nYou earned ${wage} coins.`,
             {
                 fontFamily: 'MS PGothic',
                 fontSize: 48,
@@ -42,7 +42,7 @@ function displayText(scene) {
         alpha: 1,
         duration: 600,
         yoyo: true,
-        hold: 400,
+        hold: 1500,
         onComplete: () => {
             text.destroy();
         }

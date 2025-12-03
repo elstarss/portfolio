@@ -4,6 +4,10 @@ import { playerState } from '../State/PlayerState.js';
 import { PlayerStats } from '../State/Stats.js';
 
 export const ButtonHandler = {
+    start: (scene) => {
+        scene.scene.stop('WelcomeScene');
+        scene.scene.launch('GameScene');
+    },
     feed: (scene) => performAction(scene, Actions.feed),
     pet: (scene) => performAction(scene, Actions.play),
     clean: (scene) => performAction(scene, Actions.clean),

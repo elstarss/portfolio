@@ -1,4 +1,7 @@
-import UIButton from '../UI/UIButton.js';
+import { creatureState } from '../State/CreatureState.js';
+import { playerState } from '../State/PlayerState.js';
+import UIManager from '../UI/UIManager.js';
+import { ButtonHandler } from '../Utilities/ButtonHandler.js';
 
 export default class WelcomeScene extends Phaser.Scene {
     constructor() {
@@ -6,7 +9,6 @@ export default class WelcomeScene extends Phaser.Scene {
     }
 
     create() {
-        console.log('welcome scene');
         const background = this.add
             .image(0, 0, 'bg')
             .setOrigin(0)
@@ -14,10 +16,43 @@ export default class WelcomeScene extends Phaser.Scene {
         background.setDepth(0);
 
         const welcomeText =
-            "Welcome! Whilst you're on my portfolio there's a little creature here you can look after if you want!";
+            "Welcome! \nWhilst you're on my portfolio \nthere's a little creature here you can \nlook after if you want!";
 
-        // start button
-        this.startButton = new UIButton(this, 100, 100, 'start-ui', 0, 'start');
-        this.startButton.on('pointerdown', () => this.scene.start('GameScene'));
+        const buttonData = [
+            { x: 400, y: 250, texture: 'start-ui', actionKey: 'start' }
+        ];
+        this.ui = new UIManager(
+            this,
+            playerState,
+            creatureState,
+            [],
+            buttonData,
+            ButtonHandler
+        );
+        this.buttons = this.ui.createActionButtons();
+        this.text = this.ui.createCustomTest(130, 100, welcomeText, 24);
+
+        // playing
+        // const emitter1 = this.add.particles(400, -40, 'star', {
+        //     angle: { min: -300, max: 800 },
+        //     speed: { min: 50, max: 150 },
+        //     lifespan: 4000,
+        //     gravityY: 30,
+        //     quantity: 2,
+        //     bounce: 0.4,
+        //     bounds: new Phaser.Geom.Rectangle(-100, -200, 1000, 750)
+        // });
+        // const emitter2 = this.add.particles(400, -40, 'star', {
+        //     angle: { min: -80, max: 260 },
+        //     speed: { min: 50, max: 150 },
+        //     lifespan: 4000,
+        //     gravityY: 30,
+        //     quantity: 2,
+        //     bounce: 0.4,
+        //     bounds: new Phaser.Geom.Rectangle(-100, -200, 1000, 750)
+        // });
+
+        // emitter1.particleBringToTop = false;
+        // const fx = emitter1.postFX.addBokeh(0.5, 1, 0.2);
     }
 }

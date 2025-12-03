@@ -8,12 +8,14 @@ export default class UIBar {
         this.maxValue = creatureState.getMaxStat(statName);
         this.targetValue = creatureState.getStat(statName);
         this.displayValue = this.targetValue / this.maxValue;
+        this.colour = colour;
+        this.isIconPulsing = false;
 
         // icon
         this.icon = scene.add
             .image(x - 40, y + height / 2, iconKey)
             .setOrigin(0.5)
-            .setScale(0.6);
+            .setScale(0.8);
 
         // bg
         this.bg = scene.add
@@ -34,8 +36,49 @@ export default class UIBar {
     }
 
     update() {
-        const percent = this.targetValue / this.maxValue;
-        this.displayValue = Phaser.Math.Linear(this.displayValue, percent, 0.1);
+        const percentageFull = this.targetValue / this.maxValue;
+        this.displayValue = Phaser.Math.Linear(
+            this.displayValue,
+            percentageFull,
+            0.1
+        );
         this.bar.width = this.width * this.displayValue;
+
+        if (percentageFull > 0.2 && percentageFull <= 0.35) {
+            this.bar.setFillStyle(this.colour);
+            if (!this.isIconPulsing) {
+                this.isIconPulsing = true;
+                this.iconPulseTween = this.scene.tweens.add({
+                    targets: this.icon,
+                    scale: 1.1,
+                    yoyo: true,
+                    repeat: -1,
+                    duration: 800
+                });
+            }
+        } else if (percentageFull <= 0.2) {
+            this.bar.setFillStyle(0xff0000);
+            if (!this.isIconPulsing) {
+                this.isIconPulsing = true;
+                this.iconPulseTween = this.scene.tweens.add({
+                    targets: this.icon,
+                    scale: 1.15,
+                    yoyo: true,
+                    repeat: -1,
+                    duration: 250
+                });
+            }
+        } else {
+            this.bar.setFillStyle(this.colour);
+
+            if (this.isIconPulsing) {
+                this.isIconPulsing = false;
+                if (this.iconPulseTween) {
+                    this.iconPulseTween.stop();
+                    this.iconPulseTween = null;
+                }
+                this.icon.setScale(1); // reset icon
+            }
+        }
     }
 }

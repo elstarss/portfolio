@@ -29,6 +29,7 @@ export default class BootScene extends Phaser.Scene {
         this.load.image('food-icon', 'food-icon.png');
         this.load.image('cookie', 'cookie.png');
         this.load.image('cookie-plate', 'cookie-plate.png');
+        this.load.image('star', 'star.png');
 
         // shop
         this.load.setPath('phaser/assets/shop/');
@@ -38,6 +39,6 @@ export default class BootScene extends Phaser.Scene {
     }
 
     create() {
-        this.scene.start('GameScene');
+        this.scene.start('WelcomeScene');
     }
 }

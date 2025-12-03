@@ -29,8 +29,8 @@ class PlayerState {
     // next day
     payDay() {
         const wage = Phaser.Math.Between(1, 10);
-        console.log(`wage today is: ${wage}`);
         this.setStat(PlayerStats.COINS, wage);
+        return wage;
     }
 }
 

@@ -23,7 +23,7 @@ export class GameScene extends Phaser.Scene {
         background.setDepth(0);
 
         // creature
-        this.creature = new Creature(this, 200, 200, 'rolly', 0);
+        this.creature = new Creature(this, 200, 300, 'rolly', 0);
         this.creature.setDepth(1);
 
         // ui
@@ -33,23 +33,23 @@ export class GameScene extends Phaser.Scene {
             {
                 stat: CreatureStats.HUNGER,
                 icon: 'food-icon',
-                x: 500,
+                x: 550,
                 y: 50,
-                colour: 0xff5555
+                colour: '#1FBF71'
             },
             {
                 stat: CreatureStats.CLEAN,
                 icon: 'clean-icon',
-                x: 500,
+                x: 550,
                 y: 100,
-                colour: 0x55aaff
+                colour: '#003dafff'
             },
             {
                 stat: CreatureStats.JOY,
                 icon: 'joy-icon',
-                x: 500,
+                x: 550,
                 y: 150,
-                colour: 0xffff00
+                colour: '#f2c94cff'
             }
         ];
         // buttons
@@ -58,7 +58,7 @@ export class GameScene extends Phaser.Scene {
             { x: 100, y: 200, texture: 'clean-ui', actionKey: 'clean' },
             { x: 100, y: 300, texture: 'pet-ui', actionKey: 'pet' },
             { x: 100, y: 400, texture: 'shop-ui', actionKey: 'shop' },
-            { x: 600, y: 350, texture: 'nextDay-ui', actionKey: 'next-day' }
+            { x: 700, y: 400, texture: 'nextDay-ui', actionKey: 'next-day' }
         ];
         this.ui = new UIManager(
             this,
@@ -71,13 +71,13 @@ export class GameScene extends Phaser.Scene {
 
         this.ui.createAllUI();
         this.UIBars = this.ui.returnUIBars();
-        this.text = this.ui.returnCointText();
+        this.text = this.ui.returnCoinText();
 
         this.handleStatChange = (stat, value) => {
             const bar = this.UIBars.find((b) => b.statName === stat);
             if (bar) bar.targetValue = value;
             if (stat === PlayerStats.COINS) {
-                this.text.setText(`Coins: ${value}`);
+                this.text.setText(`COINS: ${value}`);
             }
         };
 
@@ -94,5 +94,6 @@ export class GameScene extends Phaser.Scene {
 
     update() {
         this.UIBars.forEach((bar) => bar.update());
+        this.creature.update();
     }
 }

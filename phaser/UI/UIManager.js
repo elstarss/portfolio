@@ -28,18 +28,18 @@ export default class UIManager {
     }
 
     // Create everything at once
-    createAllUI(coinTextX = 50, coinTextY = 50) {
-        this.createCoinText(coinTextX, coinTextY);
+    createAllUI() {
+        this.createCoinText();
         this.createStatBars();
         this.createActionButtons();
     }
 
     // COIN TEXT
-    createCoinText(x, y) {
+    createCoinText(x = 50, y = 50) {
         this.text.coins = this.scene.add.text(
             x,
             y,
-            `Coins: ${this.playerState.getStat(PlayerStats.COINS)}`,
+            `COINS: ${this.playerState.getStat(PlayerStats.COINS)}`,
             {
                 fontFamily: 'MS PGothic',
                 fontSize: 20,
@@ -47,23 +47,37 @@ export default class UIManager {
                 color: '#5f2199ff'
             }
         );
-    }
-    returnCointText() {
         return this.text.coins;
+    }
+    returnCoinText() {
+        return this.text.coins;
+    }
+    // custom text
+    createCustomTest(x, y, text, fontsize) {
+        const customText = this.scene.add.text(x, y, text, {
+            fontFamily: 'Consolas',
+            fontSize: fontsize,
+            fontStyle: 'bold',
+            color: '#5f2199ff'
+        });
+        return customText;
     }
 
     // STAT BARS
     createStatBars() {
         this.bars = this.statsData.map((data) => {
+            const rgbHex = data.colour.slice(0, 7);
+            const phaserColor =
+                Phaser.Display.Color.HexStringToColor(rgbHex).color;
             return new UIBar(
                 this.scene,
                 data.x,
                 data.y,
-                200, // width
-                20, // height
+                200,
+                20,
                 data.stat,
                 data.icon,
-                data.colour
+                phaserColor
             );
         });
     }
@@ -83,7 +97,6 @@ export default class UIManager {
                 data.actionKey
             );
             button.on('pointerdown', () => {
-                console.log(data.linkedAction);
                 const handler = this.handlers[data.actionKey];
                 if (!handler) return;
                 const config = data.linkedAction
