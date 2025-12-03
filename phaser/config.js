@@ -1,7 +1,6 @@
 import BootScene from './scenes/BootScene.js';
 import WelcomeScene from './scenes/WelcomeScene.js';
 import { GameScene } from './scenes/GameScene.js';
-import { UIScene } from './scenes/UIScene.js';
 import ShopScene from './scenes/ShopScene.js';
 import FeedScene from './scenes/actionScenes/FeedScene.js';
 
@@ -22,7 +21,7 @@ export const config = {
             debug: true
         }
     },
-    scene: [BootScene, WelcomeScene, GameScene, UIScene, ShopScene, FeedScene],
+    scene: [BootScene, WelcomeScene, GameScene, ShopScene, FeedScene],
     fps: {
         limit: 30
     },

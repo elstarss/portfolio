@@ -1,7 +1,9 @@
 import { Creature } from '../../sprites/Creature.js';
 import { creatureState } from '../../State/CreatureState.js';
-import { UIHandlers } from '../../Utilities/UIHandler.js';
-import UIButton from '../../UI/UIButton.js';
+import { ButtonHandler } from '../../Utilities/ButtonHandler.js';
+import UIManager from '../../UI/UIManager.js';
+import { playerState } from '../../State/PlayerState.js';
+import { Actions } from '../../Utilities/ActionHandler.js';
 export default class FeedScene extends Phaser.Scene {
     constructor() {
         super('FeedScene');
@@ -9,7 +11,6 @@ export default class FeedScene extends Phaser.Scene {
 
     init(data) {
         this.action = data.action;
-        console.log(this.action);
     }
 
     create() {
@@ -36,12 +37,7 @@ export default class FeedScene extends Phaser.Scene {
         this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
             gameObject.setPosition(dragX, dragY);
         });
-
-        // this.input.on('dragstart', (pointer, gameObject) => {
-        //     console.log('dragstart fired for', gameObject.texture.key);
-        // });
-        // plate- drop zone
-        // Add drop zone (plate)
+        // dropzone
         const zone = this.add.sprite(400, 300, 'cookie-plate');
         zone.setDepth(1);
         zone.setInteractive();
@@ -78,24 +74,20 @@ export default class FeedScene extends Phaser.Scene {
                 x: 550,
                 y: 400,
                 texture: 'cancel-ui',
-                actionKey: 'refund'
+                actionKey: 'refundFeed',
+                linkedAction: 'feed'
             }
         ];
-
-        this.buttons = buttonData.map((data) => {
-            const btn = new UIButton(
-                this,
-                data.x,
-                data.y,
-                data.texture,
-                0,
-                data.actionKey
-            );
-            btn.on('pointerdown', () =>
-                UIHandlers[data.actionKey](this, this.action.amount)
-            );
-            return btn;
-        });
+        // need to decide how i want to handle the scene knowing which stat to refund from
+        this.ui = new UIManager(
+            this,
+            playerState,
+            creatureState,
+            [],
+            buttonData,
+            ButtonHandler
+        );
+        this.ui.createActionButtons();
     }
 
     completeAction() {
@@ -106,6 +98,5 @@ export default class FeedScene extends Phaser.Scene {
     endInteraction() {
         this.scene.stop();
         this.scene.launch('GameScene');
-        this.scene.launch('UIScene');
     }
 }

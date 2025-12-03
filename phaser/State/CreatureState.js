@@ -1,6 +1,5 @@
 import { CreatureStats } from './Stats.js';
 import { EventBus } from '../Utilities/EventBus.js';
-import { playerState } from './PlayerState.js';
 class CreatureState {
     #name = 'Creature';
     #stats = {
@@ -21,7 +20,7 @@ class CreatureState {
         const s = this.#stats[stat];
         s.value = Phaser.Math.Clamp(s.value + change, 0, s.max);
         EventBus.emit('creature:statChanged', stat, s.value);
-        console.log(`creature setStat: new ${stat} stat: ${s.value}`);
+        // console.log(`creature setStat: new ${stat} stat: ${s.value}`);
     }
     getStat(stat) {
         return this.#stats[stat].value;

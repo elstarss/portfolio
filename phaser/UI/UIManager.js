@@ -1,0 +1,114 @@
+import { PlayerStats } from '../State/Stats.js';
+import { Actions } from '../Utilities/ActionHandler.js';
+import UIBar from './UIBar.js';
+import UIButton from './UIButton.js';
+
+export default class UIManager {
+    constructor(
+        scene,
+        playerState,
+        creatureState,
+        statsData,
+        buttonData,
+        handlers,
+        actions = Actions
+    ) {
+        this.scene = scene;
+        this.playerState = playerState;
+        this.creatureState = creatureState;
+
+        this.statsData = statsData || [];
+        this.buttonData = buttonData || [];
+        this.handlers = handlers || {};
+        this.actions = actions;
+
+        this.buttons = {};
+        this.text = {};
+        this.bars = {};
+    }
+
+    // Create everything at once
+    createAllUI(coinTextX = 50, coinTextY = 50) {
+        this.createCoinText(coinTextX, coinTextY);
+        this.createStatBars();
+        this.createActionButtons();
+    }
+
+    // COIN TEXT
+    createCoinText(x, y) {
+        this.text.coins = this.scene.add.text(
+            x,
+            y,
+            `Coins: ${this.playerState.getStat(PlayerStats.COINS)}`,
+            {
+                fontFamily: 'MS PGothic',
+                fontSize: 20,
+                fontStyle: 'bold',
+                color: '#5f2199ff'
+            }
+        );
+    }
+    returnCointText() {
+        return this.text.coins;
+    }
+
+    // STAT BARS
+    createStatBars() {
+        this.bars = this.statsData.map((data) => {
+            return new UIBar(
+                this.scene,
+                data.x,
+                data.y,
+                200, // width
+                20, // height
+                data.stat,
+                data.icon,
+                data.colour
+            );
+        });
+    }
+    returnUIBars() {
+        return this.bars;
+    }
+
+    // ACTION BUTTONS
+    createActionButtons() {
+        this.buttons = this.buttonData.map((data) => {
+            const button = new UIButton(
+                this.scene,
+                data.x,
+                data.y,
+                data.texture,
+                0,
+                data.actionKey
+            );
+            button.on('pointerdown', () => {
+                console.log(data.linkedAction);
+                const handler = this.handlers[data.actionKey];
+                if (!handler) return;
+                const config = data.linkedAction
+                    ? this.actions[data.linkedAction]
+                    : null;
+                handler(this.scene, config);
+            });
+            return button;
+        });
+    }
+
+    // MESSAGE POPUP
+    showMessage(msg) {
+        const t = this.scene.add
+            .text(100, 200, msg, { fontSize: '20px', color: '#ff0' })
+            .setAlpha(0);
+
+        this.scene.tweens.add({
+            targets: t,
+            alpha: 1,
+            duration: 200,
+            yoyo: true,
+            hold: 1000,
+            completeDelay: 200,
+            onComplete: () => t.destroy()
+        });
+    }
+}

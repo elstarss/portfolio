@@ -1,12 +1,19 @@
 import { Creature } from '../sprites/Creature.js';
 import { creatureState } from '../State/CreatureState.js';
+import { playerState } from '../State/PlayerState.js';
+import { PlayerStats } from '../State/Stats.js';
+import { CreatureStats } from '../State/Stats.js';
+import UIManager from '../UI/UIManager.js';
+import { ButtonHandler } from '../Utilities/ButtonHandler.js';
+import { EventBus } from '../Utilities/EventBus.js';
+
 export class GameScene extends Phaser.Scene {
     creature;
     constructor() {
         super('GameScene');
     }
     create() {
-        this.scene.launch('UIScene');
+        // this.scene.launch('UIScene');
 
         // bg
         const background = this.add
@@ -18,7 +25,74 @@ export class GameScene extends Phaser.Scene {
         // creature
         this.creature = new Creature(this, 200, 200, 'rolly', 0);
         this.creature.setDepth(1);
+
+        // ui
+
+        // status bars
+        const statusLevelData = [
+            {
+                stat: CreatureStats.HUNGER,
+                icon: 'food-icon',
+                x: 500,
+                y: 50,
+                colour: 0xff5555
+            },
+            {
+                stat: CreatureStats.CLEAN,
+                icon: 'clean-icon',
+                x: 500,
+                y: 100,
+                colour: 0x55aaff
+            },
+            {
+                stat: CreatureStats.JOY,
+                icon: 'joy-icon',
+                x: 500,
+                y: 150,
+                colour: 0xffff00
+            }
+        ];
+        // buttons
+        const buttonData = [
+            { x: 100, y: 100, texture: 'feed-ui', actionKey: 'feed' },
+            { x: 100, y: 200, texture: 'clean-ui', actionKey: 'clean' },
+            { x: 100, y: 300, texture: 'pet-ui', actionKey: 'pet' },
+            { x: 100, y: 400, texture: 'shop-ui', actionKey: 'shop' },
+            { x: 600, y: 350, texture: 'nextDay-ui', actionKey: 'next-day' }
+        ];
+        this.ui = new UIManager(
+            this,
+            playerState,
+            creatureState,
+            statusLevelData,
+            buttonData,
+            ButtonHandler
+        );
+
+        this.ui.createAllUI();
+        this.UIBars = this.ui.returnUIBars();
+        this.text = this.ui.returnCointText();
+
+        this.handleStatChange = (stat, value) => {
+            const bar = this.UIBars.find((b) => b.statName === stat);
+            if (bar) bar.targetValue = value;
+            if (stat === PlayerStats.COINS) {
+                this.text.setText(`Coins: ${value}`);
+            }
+        };
+
+        this.handleStatChange = this.handleStatChange.bind(this);
+        EventBus.on('creature:statChanged', this.handleStatChange);
+        EventBus.on('player:statChanged', this.handleStatChange);
+
+        // cleanup listeners when scene stops
+        this.events.once('shutdown', () => {
+            EventBus.off('player:statChanged', this.handleStatChange);
+            EventBus.off('creature:statChanged', this.handleStatChange);
+        });
     }
 
-    update() {}
+    update() {
+        this.UIBars.forEach((bar) => bar.update());
+    }
 }

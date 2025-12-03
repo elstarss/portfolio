@@ -3,20 +3,20 @@ import { playerState } from '../State/PlayerState.js';
 import { CreatureStats, PlayerStats } from '../State/Stats.js';
 
 export const Actions = {
-    FEED: {
+    feed: {
         stat: CreatureStats.HUNGER,
         cost: 1,
         amount: +1,
         requiresInteraction: true,
         interactionScene: 'FeedScene'
     },
-    CLEAN: {
+    clean: {
         stat: CreatureStats.CLEAN,
         cost: 1,
         amount: +1,
         requiresInteraction: false
     },
-    PLAY: {
+    play: {
         stat: CreatureStats.JOY,
         cost: 1,
         amount: +1,

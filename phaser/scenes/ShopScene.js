@@ -37,24 +37,24 @@ export default class ShopScene extends Phaser.Scene {
             return btn;
         });
 
-        const box = this.add.rectangle(200, 200, 100, 100, 0xff0000);
-        box.setInteractive();
-        this.input.setDraggable(box);
+        // const box = this.add.rectangle(200, 200, 100, 100, 0xff0000);
+        // box.setInteractive();
+        // this.input.setDraggable(box);
 
-        this.input.on('dragstart', (pointer, gameObject) => {
-            console.log('dragstart');
-        });
+        // this.input.on('dragstart', (pointer, gameObject) => {
+        //     console.log('dragstart');
+        // });
 
-        this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
-            console.log('dragging', dragX, dragY);
-            gameObject.x = dragX;
-            gameObject.y = dragY;
-            // or: gameObject.setPosition(dragX, dragY);
-        });
+        // this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
+        //     console.log('dragging', dragX, dragY);
+        //     gameObject.x = dragX;
+        //     gameObject.y = dragY;
+        //     // or: gameObject.setPosition(dragX, dragY);
+        // });
 
-        this.input.on('dragend', (pointer, gameObject) => {
-            console.log('dragend');
-        });
+        // this.input.on('dragend', (pointer, gameObject) => {
+        //     console.log('dragend');
+        // });
 
         // coins text
         this.text = this.add.text(

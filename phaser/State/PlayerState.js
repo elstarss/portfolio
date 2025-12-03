@@ -18,7 +18,7 @@ class PlayerState {
         const s = this.#stats[stat];
         s.value = Phaser.Math.Clamp(s.value + change, 0, s.max);
         EventBus.emit('player:statChanged', stat, s.value);
-        console.log(`playerState setStat: new ${stat} stat: ${s.value}`);
+        // console.log(`playerState setStat: new ${stat} stat: ${s.value}`);
     }
     getStat(stat) {
         return this.#stats[stat].value;
