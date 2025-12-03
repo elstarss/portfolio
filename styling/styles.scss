@@ -1,7 +1,7 @@
 // sass --watch --no-source-map styles.scss:styles.css
-@use "sizing";
-@use "media-queries";
-@import "animate.css/animate.min.css";
+@use 'sizing';
+@use 'media-queries';
+@import 'animate.css/animate.min.css';
 
 html {
     scroll-behavior: smooth;
@@ -10,7 +10,7 @@ html {
 }
 body {
     background-color: rgb(172, 128, 180);
-    font-family: "Roboto-Mono", monospace;
+    font-family: 'Roboto-Mono', monospace;
 }
 a:link {
     color: sizing.$link-colour;
@@ -93,22 +93,22 @@ a:visited {
 h1 {
     margin: 10px;
 }
-// styling about me section, on mobiles the content is displayed in a column, on desktops the content is displayed in a row
+// media-responsive about me section
 .about-me-section {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
-        "header"
-        "image"
-        "paragraph";
+        'header'
+        'image'
+        'paragraph';
     gap: 1rem;
     padding: 3rem 2rem 0rem 2rem;
 
     @include media-queries.desktop {
         grid-template-columns: 2fr 3fr;
         grid-template-areas:
-            "content image"
-            "content image";
+            'content image'
+            'content image';
         align-items: center;
     }
 
@@ -120,7 +120,7 @@ h1 {
             grid-area: header;
             text-align: center;
             font-size: sizing.$font-xl;
-            font-family: "Roboto-Mono", monospace;
+            font-family: 'Roboto-Mono', monospace;
 
             @include media-queries.desktop {
                 grid-area: content;
@@ -269,6 +269,12 @@ h1 {
             font-size: sizing.$font-xxs;
         }
     }
+}
+.game-project {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer {

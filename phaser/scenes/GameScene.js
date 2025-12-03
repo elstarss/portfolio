@@ -34,21 +34,21 @@ export class GameScene extends Phaser.Scene {
                 stat: CreatureStats.HUNGER,
                 icon: 'food-icon',
                 x: 550,
-                y: 50,
+                y: 100,
                 colour: '#1FBF71'
             },
             {
                 stat: CreatureStats.CLEAN,
                 icon: 'clean-icon',
                 x: 550,
-                y: 100,
+                y: 150,
                 colour: '#003dafff'
             },
             {
                 stat: CreatureStats.JOY,
                 icon: 'joy-icon',
                 x: 550,
-                y: 150,
+                y: 200,
                 colour: '#f2c94cff'
             }
         ];
@@ -58,7 +58,8 @@ export class GameScene extends Phaser.Scene {
             { x: 100, y: 200, texture: 'clean-ui', actionKey: 'clean' },
             { x: 100, y: 300, texture: 'pet-ui', actionKey: 'pet' },
             { x: 100, y: 400, texture: 'shop-ui', actionKey: 'shop' },
-            { x: 700, y: 400, texture: 'nextDay-ui', actionKey: 'next-day' }
+            { x: 700, y: 400, texture: 'nextDay-ui', actionKey: 'next-day' },
+            { x: 700, y: 50, texture: 'help-ui', actionKey: 'help' }
         ];
         this.ui = new UIManager(
             this,
@@ -72,6 +73,8 @@ export class GameScene extends Phaser.Scene {
         this.ui.createAllUI();
         this.UIBars = this.ui.returnUIBars();
         this.text = this.ui.returnCoinText();
+        this.buttons = this.ui.returnActionButtons();
+        this.buttons.forEach((button) => button.setDepth(2));
 
         this.handleStatChange = (stat, value) => {
             const bar = this.UIBars.find((b) => b.statName === stat);

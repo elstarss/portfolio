@@ -44,7 +44,13 @@ export default class UIManager {
                 fontFamily: 'MS PGothic',
                 fontSize: 20,
                 fontStyle: 'bold',
-                color: '#5f2199ff'
+                color: '#5f2199ff',
+                shadow: {
+                    offsetX: 0.9,
+                    offsetY: 0.9,
+                    color: '#4c1b7aff',
+                    fill: true
+                }
             }
         );
         return this.text.coins;
@@ -53,12 +59,18 @@ export default class UIManager {
         return this.text.coins;
     }
     // custom text
-    createCustomTest(x, y, text, fontsize) {
+    createCustomText(x, y, text, fontsize) {
         const customText = this.scene.add.text(x, y, text, {
             fontFamily: 'Consolas',
             fontSize: fontsize,
             fontStyle: 'bold',
-            color: '#5f2199ff'
+            color: '#5f2199ff',
+            shadow: {
+                offsetX: 0.9,
+                offsetY: 0.9,
+                color: '#4c1b7aff',
+                fill: true
+            }
         });
         return customText;
     }
@@ -106,6 +118,9 @@ export default class UIManager {
             });
             return button;
         });
+    }
+    returnActionButtons() {
+        return this.buttons;
     }
 
     // MESSAGE POPUP

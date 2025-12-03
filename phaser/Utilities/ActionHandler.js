@@ -6,7 +6,7 @@ export const Actions = {
     feed: {
         stat: CreatureStats.HUNGER,
         cost: 1,
-        amount: +1,
+        amount: +2,
         requiresInteraction: true,
         interactionScene: 'FeedScene'
     },

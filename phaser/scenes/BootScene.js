@@ -9,7 +9,7 @@ export default class BootScene extends Phaser.Scene {
             frameHeight: 128
         });
         this.load.image('bg', 'phaser/assets/bg.png');
-        this.add.image('wheely', 'phaser/assets/wheely.png');
+        this.load.image('help-bg', 'phaser/assets/help-bg.png');
 
         // ui
         this.load.setPath('phaser/assets/ui/');
@@ -21,6 +21,8 @@ export default class BootScene extends Phaser.Scene {
         this.load.image('home-ui', 'home-ui.png');
         this.load.image('clean-ui', 'clean-ui.png');
         this.load.image('cancel-ui', 'cancel-ui.png');
+        this.load.image('help-ui', 'help-ui.png');
+        this.load.image('exit-ui', 'exit-ui.png');
 
         // icons
         this.load.setPath('phaser/assets/icons/');

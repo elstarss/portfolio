@@ -24,15 +24,22 @@ function cameraFade(camera, duration) {
 function displayText(scene, wage) {
     const text = scene.add
         .text(
-            scene.scale.width / 2,
-            scene.scale.height / 2,
+            300,
+            150,
             `${creatureState.getName()} is ${creatureState.getStat(
                 CreatureStats.AGE
-            )} today! \n\nYou earned ${wage} coins.`,
+            )} today! \n\nyou earned ${wage} coins.`,
             {
                 fontFamily: 'MS PGothic',
-                fontSize: 48,
-                color: '#5f2199ff'
+                fontSize: 32,
+                fontStyle: 'bold',
+                color: '#5f2199ff',
+                shadow: {
+                    offsetX: 0.9,
+                    offsetY: 0.9,
+                    color: '#4c1b7aff',
+                    fill: true
+                }
             }
         )
         .setOrigin(0.5);

@@ -3,6 +3,7 @@ import WelcomeScene from './scenes/WelcomeScene.js';
 import { GameScene } from './scenes/GameScene.js';
 import ShopScene from './scenes/ShopScene.js';
 import FeedScene from './scenes/actionScenes/FeedScene.js';
+import HelpScene from './scenes/HelpScreen.js';
 
 export const config = {
     type: Phaser.AUTO,
@@ -21,9 +22,16 @@ export const config = {
             debug: true
         }
     },
-    scene: [BootScene, WelcomeScene, GameScene, ShopScene, FeedScene],
+    scene: [
+        BootScene,
+        WelcomeScene,
+        GameScene,
+        HelpScene,
+        ShopScene,
+        FeedScene
+    ],
     fps: {
-        limit: 30
+        limit: 60
     },
     input: { mouse: true, touch: true }
 };

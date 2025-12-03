@@ -16,7 +16,7 @@ export default class WelcomeScene extends Phaser.Scene {
         background.setDepth(0);
 
         const welcomeText =
-            "Welcome! \nWhilst you're on my portfolio \nthere's a little creature here you can \nlook after if you want!";
+            "Welcome! \nWhilst you're on my portfolio there's a little creature here you can look after if you want!";
 
         const buttonData = [
             { x: 400, y: 250, texture: 'start-ui', actionKey: 'start' }
@@ -30,7 +30,8 @@ export default class WelcomeScene extends Phaser.Scene {
             ButtonHandler
         );
         this.buttons = this.ui.createActionButtons();
-        this.text = this.ui.createCustomTest(130, 100, welcomeText, 24);
+        this.text = this.ui.createCustomText(400, 150, welcomeText, 24);
+        this.text.setWordWrapWidth(550).setOrigin(0.5);
 
         // playing
         // const emitter1 = this.add.particles(400, -40, 'star', {

@@ -15,16 +15,39 @@ export const ButtonHandler = {
         DayTransitionHandler.start(scene);
     },
     shop: (scene) => {
-        console.log('scene: ' + scene);
         scene.scene.pause('GameScene');
         scene.scene.launch('ShopScene');
     },
     refundFeed: (scene, actionConfig) => {
-        console.log(actionConfig);
         const amount = actionConfig.cost;
-        console.log(amount);
         playerState.setStat(PlayerStats.COINS, +amount);
         scene.scene.sleep('FeedScene');
         scene.scene.launch('GameScene');
+    },
+    help: (scene) => {
+        scene.scene.pause('GameScene');
+        scene.scene.launch('HelpScene');
+
+        const helpScene = scene.scene.get('HelpScene');
+        helpScene.cameras.main.setAlpha(0);
+        helpScene.tweens.add({
+            targets: helpScene.cameras.main,
+            alpha: 1,
+            duration: 400,
+            ease: 'Linear'
+        });
+    },
+    exit: (scene) => {
+        const helpScene = scene.scene.get('HelpScene');
+        helpScene.tweens.add({
+            targets: helpScene.cameras.main,
+            alpha: 0,
+            duration: 400,
+            ease: 'Linear',
+            onComplete: () => {
+                scene.scene.stop('HelpScene');
+                scene.scene.resume('GameScene');
+            }
+        });
     }
 };
