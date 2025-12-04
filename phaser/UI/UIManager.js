@@ -41,7 +41,7 @@ export default class UIManager {
             y,
             `COINS: ${this.playerState.getStat(PlayerStats.COINS)}`,
             {
-                fontFamily: 'MS PGothic',
+                fontFamily: 'Consolas',
                 fontSize: 20,
                 fontStyle: 'bold',
                 color: '#5f2199ff',
@@ -111,10 +111,8 @@ export default class UIManager {
             button.on('pointerdown', () => {
                 const handler = this.handlers[data.actionKey];
                 if (!handler) return;
-                const config = data.linkedAction
-                    ? this.actions[data.linkedAction]
-                    : null;
-                handler(this.scene, config);
+                const payload = data.payload || null;
+                handler(this.scene, payload);
             });
             return button;
         });

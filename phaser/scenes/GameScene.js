@@ -23,7 +23,7 @@ export class GameScene extends Phaser.Scene {
         background.setDepth(0);
 
         // creature
-        this.creature = new Creature(this, 200, 300, 'rolly', 0);
+        this.creature = new Creature(this, 350, 300, 'creature', 1);
         this.creature.setDepth(1);
 
         // ui
@@ -75,6 +75,13 @@ export class GameScene extends Phaser.Scene {
         this.text = this.ui.returnCoinText();
         this.buttons = this.ui.returnActionButtons();
         this.buttons.forEach((button) => button.setDepth(2));
+
+        this.statText = this.ui.createCustomText(
+            500,
+            50,
+            `${creatureState.getName()}'s stats:`,
+            20
+        );
 
         this.handleStatChange = (stat, value) => {
             const bar = this.UIBars.find((b) => b.statName === stat);

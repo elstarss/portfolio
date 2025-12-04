@@ -19,15 +19,15 @@ class PlayerState {
     }
 
     setStat(stat, change) {
-        console.log(
-            'current coin value is: ' + this.getStat(PlayerStats.COINS)
-        );
+        // console.log(
+        //     'current coin value is: ' + this.getStat(PlayerStats.COINS)
+        // );
         const s = this.#stats[stat];
         s.value = Phaser.Math.Clamp(s.value + change, 0, s.max);
         EventBus.emit('player:statChanged', stat, s.value);
-        console.log(
-            'after setting, coin value is ' + this.getStat(PlayerStats.COINS)
-        );
+        // console.log(
+        //     'after setting, coin value is ' + this.getStat(PlayerStats.COINS)
+        // );
     }
     getStat(stat) {
         return this.#stats[stat].value;

@@ -21,9 +21,9 @@ export default class FeedScene extends Phaser.Scene {
         background.setDepth(0);
 
         // creature
-        this.creature = new Creature(this, 200, 200, 'rolly', 0);
-        this.creature.setDepth(1);
-        this.creature.freeze();
+        // this.creature = new Creature(this, 200, 200, 'creature', 1);
+        // this.creature.setDepth(1);
+        // this.creature.freeze();
 
         // food
         // Add sprite

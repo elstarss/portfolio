@@ -15,8 +15,6 @@ export const DayTransitionHandler = {
             creatureState.decreaseStatsForNextDay();
             const wage = playerState.payDay();
             displayText(scene, wage);
-            console.log(creatureState.getAllCreatureStats());
-            console.log(playerState.getAllPlayerStats());
             await cameraFadeIn(camera, 800);
         }
     }

@@ -6,6 +6,7 @@ import { creatureState } from '../State/CreatureState.js';
 
 export const ButtonHandler = {
     start: (scene) => {
+        creatureState.setName(scene.currentName || 'Fluffy');
         scene.scene.stop('WelcomeScene');
         scene.scene.launch('GameScene');
     },
@@ -56,5 +57,13 @@ export const ButtonHandler = {
         creatureState.resetAll();
         playerState.resetAll();
         scene.scene.launch('WelcomeScene');
+    },
+    roll: (scene, payload) => {
+        const { nameOptions, textObject } = payload;
+        let randomNumber = Phaser.Math.Between(0, nameOptions.length - 1);
+        const newName = nameOptions[randomNumber];
+        console.log(randomNumber);
+        textObject.setText(newName);
+        scene.currentName = newName;
     }
 };

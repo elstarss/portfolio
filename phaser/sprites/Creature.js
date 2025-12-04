@@ -1,3 +1,6 @@
+import { creatureState } from '../State/CreatureState.js';
+import { CreatureStats } from '../State/Stats.js';
+
 export class Creature extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame);
@@ -6,9 +9,21 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
         this.setInteractive();
         this.setCollideWorldBounds(true);
 
-        this.body.velocity.x = 50;
-        this.body.velocity.y = 0;
+        // this.body.velocity.x = 50;
+        // this.body.velocity.y = 0;
         this.body.setBounce(1);
+        this.setScale(1.2);
+
+        scene.anims.create({
+            key: 'standing',
+            frames: this.anims.generateFrameNumbers('creature', {
+                start: 1,
+                end: 6
+            }),
+            frameRate: 1,
+            repeat: -1
+        });
+        this.play('standing');
     }
     freeze() {
         const body = this.body;
@@ -32,11 +47,14 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
         );
     }
     update() {
-        const body = this.body;
-        if (body.velocity.x > 0) {
-            body.velocity.y = 0;
-        } else if (body.velocity.y > 0) {
-            body.velocity.x = 0;
-        }
+        // const body = this.body;
+        // if (body.velocity.x > 0) {
+        //     body.velocity.y = 0;
+        // } else if (body.velocity.y > 0) {
+        //     this.anims.play('standing');
+        // }
+        // if (creatureState.getStat(CreatureStats.AGE) >= 0) {
+        //     this.play('standing');
+        // }
     }
 }

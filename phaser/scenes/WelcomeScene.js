@@ -4,6 +4,7 @@ import UIManager from '../UI/UIManager.js';
 import { ButtonHandler } from '../Utilities/ButtonHandler.js';
 
 export default class WelcomeScene extends Phaser.Scene {
+    // currentName = initialName;
     constructor() {
         super('WelcomeScene');
     }
@@ -16,10 +17,34 @@ export default class WelcomeScene extends Phaser.Scene {
         background.setDepth(0);
 
         const welcomeText =
-            "Welcome! \nWhilst you're on my portfolio there's a little creature here you can look after if you want!";
+            "Whilst you're here on my portfolio please help me look after my little creature. \nFirst things first, they need a name! Click generate until you're happy with the name, and then click to start.";
+
+        const nameOptions = [
+            'Fluffy',
+            'Steve',
+            'Susan',
+            'Rex',
+            'Meep',
+            'Angel',
+            'George Michael',
+            'Socks',
+            'Mike'
+        ];
 
         const buttonData = [
-            { x: 400, y: 250, texture: 'start-ui', actionKey: 'start' }
+            {
+                x: 600,
+                y: 300,
+                texture: 'generate-ui',
+                actionKey: 'roll',
+                payload: { nameOptions }
+            },
+            {
+                x: 600,
+                y: 370,
+                texture: 'start-ui',
+                actionKey: 'start'
+            }
         ];
         this.ui = new UIManager(
             this,
@@ -32,7 +57,18 @@ export default class WelcomeScene extends Phaser.Scene {
         this.buttons = this.ui.createActionButtons();
         this.text = this.ui.createCustomText(400, 150, welcomeText, 24);
         this.text.setWordWrapWidth(550).setOrigin(0.5);
-
+        const nameSpace = this.add.image(300, 325, 'name-ui');
+        nameSpace.setScale(2);
+        this.currentName =
+            nameOptions[Phaser.Math.Between(0, nameOptions.length - 1)];
+        this.nameText = this.ui.createCustomText(
+            300,
+            325,
+            this.currentName,
+            40
+        );
+        buttonData[0].payload.textObject = this.nameText;
+        this.nameText.setWordWrapWidth(200).setOrigin(0.5);
         // playing
         // const emitter1 = this.add.particles(400, -40, 'star', {
         //     angle: { min: -300, max: 800 },
