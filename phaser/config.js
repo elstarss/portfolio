@@ -4,7 +4,7 @@ import { GameScene } from './scenes/GameScene.js';
 import ShopScene from './scenes/ShopScene.js';
 import FeedScene from './scenes/actionScenes/FeedScene.js';
 import HelpScene from './scenes/HelpScreen.js';
-import GameoverScene from './scenes/GameOverScene.js';
+import GameoverScene from './scenes/GameoverScene.js';
 
 export const config = {
     type: Phaser.AUTO,

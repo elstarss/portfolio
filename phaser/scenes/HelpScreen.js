@@ -1,7 +1,7 @@
-import { creatureState } from '../State/CreatureState.JS';
-import { playerState } from '../State/PlayerState.JS';
-import UIManager from '../UI/UIManager.JS';
-import { ButtonHandler } from '../Utilities/ButtonHandler.JS';
+import { creatureState } from '../State/CreatureState.js';
+import { playerState } from '../State/PlayerState.js';
+import UIManager from '../UI/UIManager.js';
+import { ButtonHandler } from '../Utilities/ButtonHandler.js';
 
 export default class HelpScene extends Phaser.Scene {
     constructor() {

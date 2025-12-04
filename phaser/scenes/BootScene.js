@@ -12,7 +12,7 @@ export default class BootScene extends Phaser.Scene {
         this.load.image('help-bg', 'phaser/assets/help-bg.png');
 
         // ui
-        this.load.setPath('./phaser/assets/ui/');
+        this.load.setPath('phaser/assets/ui/');
         this.load.image('feed-ui', 'feed-ui.png');
         this.load.image('pet-ui', 'pet-ui.png');
         this.load.image('nextDay-ui', 'next-day-ui.png');
@@ -29,7 +29,7 @@ export default class BootScene extends Phaser.Scene {
         this.load.image('start-over-ui', 'start-over-ui.png');
 
         // icons
-        this.load.setPath('./phaser/assets/icons/');
+        this.load.setPath('phaser/assets/icons/');
         this.load.image('joy-icon', 'joy-icon.png');
         this.load.image('clean-icon', 'water-icon.png');
         this.load.image('food-icon', 'food-icon.png');
@@ -38,7 +38,7 @@ export default class BootScene extends Phaser.Scene {
         this.load.image('star', 'star.png');
 
         // shop
-        this.load.setPath('./phaser/assets/shop/');
+        this.load.setPath('phaser/assets/shop/');
         this.load.image('food-shop', 'food-shop.png');
         this.load.image('soap-shop', 'soap-shop.png');
         this.load.image('toys-shop', 'toys-shop.png');

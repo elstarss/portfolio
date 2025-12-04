@@ -1,5 +1,4 @@
-import UIButton from '../UI/UIButton.js';
-import { CreatureStats, PlayerStats } from '../State/Stats.js';
+import { PlayerStats } from '../State/Stats.js';
 import { creatureState } from '../State/CreatureState.js';
 import { ShopHandlers } from '../Utilities/ShopHandlers.js';
 import { EventBus } from '../Utilities/EventBus.js';
