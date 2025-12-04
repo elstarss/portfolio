@@ -25,6 +25,7 @@ export const Actions = {
 };
 
 export function performAction(scene, action) {
+    console.log(creatureState.getAllCreatureStats());
     const { stat, cost, amount, requiresInteraction, interactionScene } =
         action;
     const current = creatureState.getStat(stat);

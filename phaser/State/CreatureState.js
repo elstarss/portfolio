@@ -1,14 +1,17 @@
 import { CreatureStats } from './Stats.js';
 import { EventBus } from '../Utilities/EventBus.js';
 class CreatureState {
-    #name = 'Creature';
+    #name = 'Fluffy';
     #stats = {
         [CreatureStats.HUNGER]: { value: 8, max: 10 },
         [CreatureStats.CLEAN]: { value: 8, max: 10 },
-        [CreatureStats.JOY]: { value: 5, max: 10 },
-        [CreatureStats.FRIENDSHIP]: { value: 0, max: Infinity },
-        [CreatureStats.AGE]: { value: 0, max: Infinity }
+        [CreatureStats.JOY]: { value: 8, max: 10 },
+        [CreatureStats.FRIENDSHIP]: { value: 0, max: 50000 },
+        [CreatureStats.AGE]: { value: 0, max: 50000 }
     };
+    constructor() {
+        this.initialStats = JSON.parse(JSON.stringify(this.#stats));
+    }
 
     static getInstance() {
         if (!CreatureState.instance) {
@@ -20,7 +23,7 @@ class CreatureState {
         const s = this.#stats[stat];
         s.value = Phaser.Math.Clamp(s.value + change, 0, s.max);
         EventBus.emit('creature:statChanged', stat, s.value);
-        // console.log(`creature setStat: new ${stat} stat: ${s.value}`);
+        console.log(`creature setStat: new ${stat} stat: ${s.value}`);
     }
     getStat(stat) {
         return this.#stats[stat].value;
@@ -54,6 +57,35 @@ class CreatureState {
         return Object.fromEntries(
             Object.entries(this.#stats).map(([key, stat]) => [key, stat.value])
         );
+    }
+    areStatsEmpty(
+        statsToCheck = [
+            CreatureStats.HUNGER,
+            CreatureStats.JOY,
+            CreatureStats.CLEAN
+        ]
+    ) {
+        let emptyStatsArr = [];
+        for (let i = 0; i < statsToCheck.length; i++) {
+            if (this.getStat(statsToCheck[i]) <= 0) {
+                console.log(this.getStat(statsToCheck[i]));
+                console.log(this.getStat(statsToCheck[i]));
+                emptyStatsArr.push(statsToCheck[i]);
+            }
+        }
+        console.log(emptyStatsArr);
+        return emptyStatsArr.length == 0 ? false : emptyStatsArr;
+    }
+
+    resetAll() {
+        this.#stats = JSON.parse(JSON.stringify(this.initialStats));
+        for (const stat in this.#stats) {
+            EventBus.emit(
+                'creature:statChanged',
+                stat,
+                this.#stats[stat].value
+            );
+        }
     }
 }
 

@@ -2,6 +2,7 @@ import { DayTransitionHandler } from './DayTransitionHandler.js';
 import { Actions, performAction } from './ActionHandler.js';
 import { playerState } from '../State/PlayerState.js';
 import { PlayerStats } from '../State/Stats.js';
+import { creatureState } from '../State/CreatureState.js';
 
 export const ButtonHandler = {
     start: (scene) => {
@@ -49,5 +50,11 @@ export const ButtonHandler = {
                 scene.scene.resume('GameScene');
             }
         });
+    },
+    'start-over': (scene) => {
+        scene.scene.stop('GameoverScene');
+        creatureState.resetAll();
+        playerState.resetAll();
+        scene.scene.launch('WelcomeScene');
     }
 };

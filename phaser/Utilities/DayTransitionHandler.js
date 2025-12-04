@@ -4,15 +4,27 @@ import { CreatureStats } from '../State/Stats.js';
 
 export const DayTransitionHandler = {
     async start(scene) {
+        console.log(creatureState.getAllCreatureStats());
+        console.log(playerState.getAllPlayerStats());
         const camera = scene.cameras.main;
         await cameraFade(camera, 800);
-        creatureState.age();
-        creatureState.decreaseStatsForNextDay();
-        const wage = playerState.payDay();
-        displayText(scene, wage);
-        await cameraFadeIn(camera, 800);
+        if (creatureState.areStatsEmpty()) {
+            statsEmpty(scene, creatureState.areStatsEmpty());
+        } else {
+            creatureState.age();
+            creatureState.decreaseStatsForNextDay();
+            const wage = playerState.payDay();
+            displayText(scene, wage);
+            console.log(creatureState.getAllCreatureStats());
+            console.log(playerState.getAllPlayerStats());
+            await cameraFadeIn(camera, 800);
+        }
     }
 };
+function statsEmpty(scene, statsArr) {
+    scene.scene.stop('GameScene');
+    scene.scene.launch('GameoverScene', { statsArr });
+}
 
 function cameraFade(camera, duration) {
     return new Promise((resolve) => {

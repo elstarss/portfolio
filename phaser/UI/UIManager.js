@@ -118,6 +118,7 @@ export default class UIManager {
             });
             return button;
         });
+        return this.buttons;
     }
     returnActionButtons() {
         return this.buttons;
