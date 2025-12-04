@@ -1,5 +1,4 @@
 import { creatureState } from '../State/CreatureState.js';
-import { CreatureStats } from '../State/Stats.js';
 
 export class Creature extends Phaser.Physics.Arcade.Sprite {
     currentMood;

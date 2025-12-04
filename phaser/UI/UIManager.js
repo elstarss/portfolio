@@ -108,11 +108,15 @@ export default class UIManager {
                 0,
                 data.actionKey
             );
-            button.on('pointerdown', () => {
+            // button.on('pointerdown', () => {
+            //     const handler = this.handlers[data.actionKey];
+            //     if (!handler) return;
+            //     const payload = data.payload || null;
+            //     handler(this.scene, payload);
+            // });
+            button.setClickHandler(() => {
                 const handler = this.handlers[data.actionKey];
-                if (!handler) return;
-                const payload = data.payload || null;
-                handler(this.scene, payload);
+                if (handler) handler(this.scene, data.payload);
             });
             return button;
         });

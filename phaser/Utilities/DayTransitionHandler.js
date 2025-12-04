@@ -5,7 +5,7 @@ import { CreatureStats } from '../State/Stats.js';
 export const DayTransitionHandler = {
     async start(scene) {
         const camera = scene.cameras.main;
-        await cameraFade(camera, 800);
+        await cameraFade(camera, 600);
         if (creatureState.areStatsEmpty()) {
             statsEmpty(scene, creatureState.areStatsEmpty());
         } else {
@@ -13,7 +13,7 @@ export const DayTransitionHandler = {
             creatureState.decreaseStatsForNextDay();
             const wage = playerState.payDay();
             displayText(scene, wage);
-            await cameraFadeIn(camera, 800);
+            await cameraFadeIn(camera, 600);
         }
     }
 };
@@ -57,7 +57,7 @@ function displayText(scene, wage) {
         alpha: 1,
         duration: 600,
         yoyo: true,
-        hold: 1500,
+        hold: 1200,
         onComplete: () => {
             text.destroy();
         }

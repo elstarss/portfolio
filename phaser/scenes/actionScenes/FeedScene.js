@@ -1,9 +1,7 @@
-import { Creature } from '../../sprites/Creature.js';
 import { creatureState } from '../../State/CreatureState.js';
 import { ButtonHandler } from '../../Utilities/ButtonHandler.js';
 import UIManager from '../../UI/UIManager.js';
 import { playerState } from '../../State/PlayerState.js';
-import { Actions } from '../../Utilities/ActionHandler.js';
 export default class FeedScene extends Phaser.Scene {
     constructor() {
         super('FeedScene');
