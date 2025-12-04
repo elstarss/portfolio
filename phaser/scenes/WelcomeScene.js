@@ -28,7 +28,12 @@ export default class WelcomeScene extends Phaser.Scene {
             'Angel',
             'George Michael',
             'Socks',
-            'Mike'
+            'Mike',
+            'Sparky',
+            'Destroyer',
+            'Gloomio',
+            'Fury',
+            'Spots'
         ];
 
         const buttonData = [
@@ -91,5 +96,42 @@ export default class WelcomeScene extends Phaser.Scene {
 
         // emitter1.particleBringToTop = false;
         // const fx = emitter1.postFX.addBokeh(0.5, 1, 0.2);
+    }
+    rollNameAnimation(textObj, finalName, speed = 60, cycles = 9) {
+        const tempNames = ['...', '??', '###', '!!!'];
+        let count = 0;
+
+        const event = this.time.addEvent({
+            delay: speed,
+            loop: true,
+            callback: () => {
+                count++;
+                if (count >= cycles) {
+                    textObj.setText(finalName);
+                    event.remove();
+                    return;
+                }
+                textObj.setText(
+                    tempNames[Phaser.Math.Between(0, tempNames.length - 1)]
+                );
+            }
+        });
+    }
+    lockInNameAnimation(textObj, onComplete) {
+        this.tweens.add({
+            targets: textObj,
+            scale: 1.3,
+            duration: 150,
+            yoyo: true,
+            ease: 'Quad.easeOut'
+        });
+
+        this.tweens.add({
+            targets: textObj,
+            alpha: 0,
+            delay: 250,
+            duration: 300,
+            onComplete
+        });
     }
 }

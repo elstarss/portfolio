@@ -8,7 +8,6 @@ class PlayerState {
     };
     constructor() {
         this.initialStats = JSON.parse(JSON.stringify(this.#stats));
-        console.log('COINS INITIAL:', this.initialStats[PlayerStats.COINS]);
     }
 
     static getInstance() {

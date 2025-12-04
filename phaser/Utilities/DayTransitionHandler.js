@@ -4,8 +4,6 @@ import { CreatureStats } from '../State/Stats.js';
 
 export const DayTransitionHandler = {
     async start(scene) {
-        console.log(creatureState.getAllCreatureStats());
-        console.log(playerState.getAllPlayerStats());
         const camera = scene.cameras.main;
         await cameraFade(camera, 800);
         if (creatureState.areStatsEmpty()) {

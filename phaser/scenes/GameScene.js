@@ -13,9 +13,6 @@ export class GameScene extends Phaser.Scene {
         super('GameScene');
     }
     create() {
-        // this.scene.launch('UIScene');
-
-        // bg
         const background = this.add
             .image(0, 0, 'bg')
             .setOrigin(0)
@@ -23,7 +20,8 @@ export class GameScene extends Phaser.Scene {
         background.setDepth(0);
 
         // creature
-        this.creature = new Creature(this, 350, 300, 'creature', 1);
+        Creature.createAnimations(this);
+        this.creature = new Creature(this, 350, 250, 'creature', 1);
         this.creature.setDepth(1);
 
         // ui
@@ -93,6 +91,7 @@ export class GameScene extends Phaser.Scene {
 
         this.handleStatChange = this.handleStatChange.bind(this);
         EventBus.on('creature:statChanged', this.handleStatChange);
+        // EventBus.on('creature:statChanged', this.checkIfHappy);
         EventBus.on('player:statChanged', this.handleStatChange);
 
         // cleanup listeners when scene stops
@@ -104,6 +103,6 @@ export class GameScene extends Phaser.Scene {
 
     update() {
         this.UIBars.forEach((bar) => bar.update());
-        this.creature.update();
+        this.creature.updateMood();
     }
 }

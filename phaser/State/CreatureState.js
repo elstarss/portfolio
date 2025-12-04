@@ -53,6 +53,38 @@ class CreatureState {
             this.setStat(statsToDecrease[i], -randomNumber);
         }
     }
+    howIsCreatureFeeling() {
+        const percentageHappy = this._getStatsAverage();
+        console.log(percentageHappy);
+        if (this.areStatsEmpty()) {
+            return 'sad';
+        } else if (percentageHappy == 100) {
+            return 'excited';
+        } else if (percentageHappy <= 20) {
+            return 'sad';
+        } else if (percentageHappy <= 50) {
+            console.log('neutral');
+            return 'neutral';
+        } else {
+            return 'happy';
+        }
+    }
+    _getStatsAverage(
+        statsToCheck = [
+            CreatureStats.HUNGER,
+            CreatureStats.JOY,
+            CreatureStats.CLEAN
+        ]
+    ) {
+        let statsTotalActual = 0;
+        let statsMax = 0;
+        for (let i = 0; i < statsToCheck.length; i++) {
+            statsMax += this.getMaxStat(statsToCheck[i]);
+            statsTotalActual += this.getStat(statsToCheck[i]);
+        }
+        const percentageTotal = (statsTotalActual / statsMax) * 100;
+        return percentageTotal;
+    }
     getAllCreatureStats() {
         return Object.fromEntries(
             Object.entries(this.#stats).map(([key, stat]) => [key, stat.value])
@@ -68,12 +100,9 @@ class CreatureState {
         let emptyStatsArr = [];
         for (let i = 0; i < statsToCheck.length; i++) {
             if (this.getStat(statsToCheck[i]) <= 0) {
-                console.log(this.getStat(statsToCheck[i]));
-                console.log(this.getStat(statsToCheck[i]));
                 emptyStatsArr.push(statsToCheck[i]);
             }
         }
-        console.log(emptyStatsArr);
         return emptyStatsArr.length == 0 ? false : emptyStatsArr;
     }
 
