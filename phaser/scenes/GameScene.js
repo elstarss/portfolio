@@ -54,12 +54,12 @@ export class GameScene extends Phaser.Scene {
         ];
         // buttons
         const buttonData = [
-            { x: 100, y: 100, texture: 'feed-ui', actionKey: 'feed' },
-            { x: 100, y: 200, texture: 'clean-ui', actionKey: 'clean' },
-            { x: 100, y: 300, texture: 'pet-ui', actionKey: 'pet' },
-            { x: 100, y: 400, texture: 'shop-ui', actionKey: 'shop' },
-            { x: 700, y: 400, texture: 'nextDay-ui', actionKey: 'next-day' },
-            { x: 700, y: 50, texture: 'help-ui', actionKey: 'help' }
+            { x: 100, y: 150, texture: 'feed-ui', actionKey: 'feed' },
+            { x: 100, y: 250, texture: 'clean-ui', actionKey: 'clean' },
+            { x: 100, y: 350, texture: 'pet-ui', actionKey: 'pet' },
+            { x: 550, y: 430, texture: 'shop-ui', actionKey: 'shop' },
+            { x: 700, y: 430, texture: 'nextDay-ui', actionKey: 'next-day' },
+            { x: 720, y: 50, texture: 'help-ui', actionKey: 'help' }
         ];
         this.ui = new UIManager(
             this,

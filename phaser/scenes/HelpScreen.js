@@ -23,6 +23,8 @@ export default class HelpScene extends Phaser.Scene {
         const buttonData = [
             { x: 570, y: 100, texture: 'exit-ui', actionKey: 'exit' }
         ];
+        const helpText =
+            "You need some help? No problem! \n\nYour goal is to keep this lil guy alive by making sure their stat levels don't dip too low- if you try to start a day with a stat depleted there will be consequences.. so best to avoid that! \nFeeding and cleaning your critter cost coins, which you can pay for from your daily wage. Your employer is unfortunately flakey so your wage does vary day to day, so mind your coins and save for the items in the shop!";
 
         this.ui = new UIManager(
             this,
@@ -33,6 +35,8 @@ export default class HelpScene extends Phaser.Scene {
             ButtonHandler
         );
         this.ui.createActionButtons();
+        this.text = this.ui.createCustomText(400, 250, helpText, 18);
+        this.text.setWordWrapWidth(350).setOrigin(0.5);
 
         this.input.keyboard.on('keydown-ESC', () => {
             this.closeHelp();

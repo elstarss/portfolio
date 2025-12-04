@@ -20,10 +20,13 @@ export default class ShopScene extends Phaser.Scene {
 
         // buttons
         const buttonData = [
-            { x: 200, y: 100, texture: 'food-shop', actionKey: 'buy-food' },
-            { x: 200, y: 200, texture: 'soap-shop', actionKey: 'buy-soap' },
-            { x: 200, y: 300, texture: 'toys-shop', actionKey: 'buy-toys' },
-            { x: 100, y: 100, texture: 'home-ui', actionKey: 'home' }
+            { x: 200, y: 200, texture: 'food-shop', actionKey: 'buy-food' },
+            { x: 400, y: 200, texture: 'soap-shop', actionKey: 'buy-soap' },
+            { x: 600, y: 200, texture: 'toys-shop', actionKey: 'buy-toys' },
+            { x: 720, y: 50, texture: 'exit-ui', actionKey: 'home' },
+            { x: 200, y: 250, texture: 'buy-ui', actionKey: 'buy-food' },
+            { x: 400, y: 250, texture: 'buy-ui', actionKey: 'buy-soap' },
+            { x: 600, y: 250, texture: 'buy-ui', actionKey: 'buy-toys' }
         ];
 
         this.ui = new UIManager(

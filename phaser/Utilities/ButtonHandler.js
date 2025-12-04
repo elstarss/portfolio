@@ -33,7 +33,7 @@ export const ButtonHandler = {
         helpScene.tweens.add({
             targets: helpScene.cameras.main,
             alpha: 1,
-            duration: 400,
+            duration: 500,
             ease: 'Linear'
         });
     },
