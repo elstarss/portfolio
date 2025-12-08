@@ -13,6 +13,14 @@ export class GameScene extends Phaser.Scene {
         super('GameScene');
     }
     create() {
+        this.scale.on('resize', (gameSize) => {
+            const width = gameSize.width;
+            const height = gameSize.height;
+
+            // Example: reposition background or UI
+            this.background.setDisplaySize(width, height);
+        });
+
         const background = this.add
             .image(0, 0, 'bg')
             .setOrigin(0)

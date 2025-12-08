@@ -11,7 +11,8 @@ export const config = {
     parent: 'game-container',
     scale: {
         mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
+        // autoCenter: Phaser.Scale.CENTER_BOTH,
+        // autoCenter: Phaser.Scale.NO_CENTER,
         width: 800,
         height: 500
     },
@@ -20,7 +21,6 @@ export const config = {
         default: 'arcade',
         arcade: {
             gravity: { x: 0, y: 0 }
-            // debug: true
         }
     },
     scene: [

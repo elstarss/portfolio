@@ -4,7 +4,7 @@ export default class BootScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.spritesheet('creature', 'phaser/assets/creature-ss.png', {
+        this.load.spritesheet('creature', 'phaser/assets/creature-ss-og.png', {
             frameWidth: 128,
             frameHeight: 256
         });
