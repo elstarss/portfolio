@@ -4,9 +4,9 @@ export default class BootScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.spritesheet('creature', 'phaser/assets/creature-ss-og.png', {
-            frameWidth: 128,
-            frameHeight: 256
+        this.load.spritesheet('creature', 'phaser/assets/creature-ss.png', {
+            frameWidth: 160,
+            frameHeight: 320
         });
         this.load.image('bg', 'phaser/assets/bg.png');
         this.load.image('help-bg', 'phaser/assets/help-bg.png');
@@ -42,6 +42,11 @@ export default class BootScene extends Phaser.Scene {
         this.load.image('food-shop', 'food-shop.png');
         this.load.image('soap-shop', 'soap-shop.png');
         this.load.image('toys-shop', 'toys-shop.png');
+
+        // feed
+        this.load.setPath('phaser/assets/feed/');
+        this.load.image('feed-bg', 'feed-bg.png');
+        this.load.image('feed-mouth', 'feed-mouth.png');
     }
 
     create() {

@@ -23,7 +23,7 @@ export const ButtonHandler = {
         scene.scene.launch('ShopScene');
     },
     refundFeed: (scene, actionConfig) => {
-        const amount = actionConfig.cost;
+        const amount = actionConfig;
         playerState.setStat(PlayerStats.COINS, +amount);
         scene.scene.sleep('FeedScene');
         scene.scene.launch('GameScene');

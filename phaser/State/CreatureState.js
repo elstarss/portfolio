@@ -55,7 +55,6 @@ class CreatureState {
     }
     howIsCreatureFeeling() {
         const percentageHappy = this._getStatsAverage();
-        console.log(percentageHappy);
         if (this.areStatsEmpty()) {
             return 'sad';
         } else if (percentageHappy == 100) {
@@ -63,7 +62,6 @@ class CreatureState {
         } else if (percentageHappy <= 20) {
             return 'sad';
         } else if (percentageHappy <= 50) {
-            console.log('neutral');
             return 'neutral';
         } else {
             return 'happy';

@@ -116,7 +116,8 @@ export default class UIManager {
             // });
             button.setClickHandler(() => {
                 const handler = this.handlers[data.actionKey];
-                if (handler) handler(this.scene, data.payload);
+                const payload = data.payload || null;
+                if (handler) handler(this.scene, payload);
             });
             return button;
         });

@@ -17,7 +17,7 @@ export default class WelcomeScene extends Phaser.Scene {
         background.setDepth(0);
 
         const welcomeText =
-            "Whilst you're here on my portfolio please help me look after my little creature. \nFirst things first, they need a name! Click generate until you're happy with the name, and then click to start.";
+            "First things first, they need a name! Click generate until you're happy with the name, and then click to start.";
 
         const nameOptions = [
             'Fluffy',

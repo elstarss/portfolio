@@ -12,7 +12,7 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
         // this.body.velocity.x = 50;
         // this.body.velocity.y = 0;
         this.body.setBounce(1);
-        this.setScale(1.2);
+        // this.setScale(1.2);
 
         Creature.createAnimations(scene);
         // this.play('idle_neutral');
@@ -83,21 +83,14 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
             key: 'idle_excited',
             frames: scene.anims.generateFrameNumbers('creature', {
                 frames: [
-                    18, 19, 20, 21, 22, 23, 24, 24, 25, 26, 27, 28, 29, 29, 18
+                    18, 18, 19, 19, 20, 20, 20, 21, 22, 23, 24, 24, 24, 24, 25,
+                    26, 27, 28, 29, 29, 30, 31, 32, 33, 34, 34, 34, 18, 18, 18,
+                    19, 19, 19
                 ]
             }),
             frameRate: 4,
             repeat: -1
         });
-        // scene.anims.create({
-        //     key: 'idle_excited',
-        //     frames: scene.anims.generateFrameNumbers('creature', {
-        //         frames: [
-        //             18, 19, 20, 21, 22, 23, 24, 24, 25, 26, 27, 28, 29, 29, 30,31,32,33                ]
-        //     }),
-        //     frameRate: 4,
-        //     repeat: -1
-        // });
     }
     updateMood() {
         const mood = creatureState.howIsCreatureFeeling();

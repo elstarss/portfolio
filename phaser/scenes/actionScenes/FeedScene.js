@@ -2,7 +2,9 @@ import { creatureState } from '../../State/CreatureState.js';
 import { ButtonHandler } from '../../Utilities/ButtonHandler.js';
 import UIManager from '../../UI/UIManager.js';
 import { playerState } from '../../State/PlayerState.js';
+import { Actions } from '../../Utilities/ActionHandler.js';
 export default class FeedScene extends Phaser.Scene {
+    buttonData = this.buttonData;
     constructor() {
         super('FeedScene');
     }
@@ -13,7 +15,7 @@ export default class FeedScene extends Phaser.Scene {
 
     create() {
         const background = this.add
-            .image(0, 0, 'bg')
+            .image(0, 0, 'feed-bg')
             .setOrigin(0)
             .setDisplaySize(this.scale.width, this.scale.height);
         background.setDepth(0);
@@ -36,7 +38,7 @@ export default class FeedScene extends Phaser.Scene {
             gameObject.setPosition(dragX, dragY);
         });
         // dropzone
-        const zone = this.add.sprite(400, 300, 'cookie-plate');
+        const zone = this.add.sprite(403, 301, 'feed-mouth');
         zone.setDepth(1);
         zone.setInteractive();
         zone.input.dropZone = true;
@@ -73,7 +75,8 @@ export default class FeedScene extends Phaser.Scene {
                 y: 50,
                 texture: 'exit-ui',
                 actionKey: 'refundFeed',
-                linkedAction: 'feed'
+                linkedAction: 'feed',
+                payload: Actions.feed.cost
             }
         ];
         // need to decide how i want to handle the scene knowing which stat to refund from
@@ -86,6 +89,13 @@ export default class FeedScene extends Phaser.Scene {
             ButtonHandler
         );
         this.ui.createActionButtons();
+
+        this.input.keyboard.on('keydown-ESC', () => {
+            this.closeHelp();
+        });
+    }
+    closeHelp() {
+        ButtonHandler.refundFeed(this, Actions.feed.cost);
     }
 
     completeAction() {
