@@ -1,9 +1,9 @@
 import { PlayerStats } from '../State/Stats.js';
 import { creatureState } from '../State/CreatureState.js';
-import { ShopHandlers } from '../Utilities/ShopHandlers.js';
 import { EventBus } from '../Utilities/EventBus.js';
 import { playerState } from '../State/PlayerState.js';
 import UIManager from '../UI/UIManager.js';
+import { ButtonHandler } from '../Utilities/ButtonHandler.js';
 
 export default class ShopScene extends Phaser.Scene {
     constructor() {
@@ -31,18 +31,21 @@ export default class ShopScene extends Phaser.Scene {
             creatureState,
             [],
             buttonData,
-            ShopHandlers
+            ButtonHandler
         );
 
         this.buttons = this.ui.createActionButtons();
         this.text = this.ui.createCoinText();
-        console.log(this.text);
 
         this.handleStatChange = (stat, value) => {
             if (stat === PlayerStats.COINS) {
                 this.text.setText(`coins: ${value}`);
             }
         };
+
+        this.input.keyboard.on('keydown-ESC', () => {
+            this.closeHelp();
+        });
 
         this.handleStatChange = this.handleStatChange.bind(this);
         EventBus.on('player:statChanged', this.handleStatChange);
@@ -51,5 +54,9 @@ export default class ShopScene extends Phaser.Scene {
         this.events.once('shutdown', () => {
             EventBus.off('player:statChanged', this.handleStatChange);
         });
+    }
+
+    closeHelp() {
+        ButtonHandler.home(this);
     }
 }

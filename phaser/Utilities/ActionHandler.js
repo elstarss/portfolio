@@ -21,7 +21,8 @@ export const Actions = {
         cost: 1,
         amount: +1,
         requiresInteraction: false
-    }
+    }, 
+    
 };
 
 export function performAction(scene, action) {

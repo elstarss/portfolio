@@ -54,6 +54,10 @@ export const ButtonHandler = {
             }
         });
     },
+    home: (scene) => {
+        scene.scene.stop(scene);
+        scene.scene.launch('GameScene');
+    },
     'start-over': (scene) => {
         scene.scene.stop('GameoverScene');
         creatureState.resetAll();
@@ -66,5 +70,10 @@ export const ButtonHandler = {
         const finalName = nameOptions[randomNumber];
         scene.rollNameAnimation(textObject, finalName);
         scene.currentName = finalName;
-    }
+    },
+
+    // shop handlers
+    'buy-soap': () => console.log('buying soap'),
+    'buy-food': () => console.log('buying food'),
+    'buy-toys': () => console.log('buying toys')
 };
