@@ -20,7 +20,7 @@ export const Actions = {
     play: {
         stat: CreatureStats.JOY,
         cost: 1,
-        amount: +1,
+        amount: +3,
         requiresInteraction: true,
         interactionScene: 'PlayScene'
     }

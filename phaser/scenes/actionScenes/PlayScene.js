@@ -31,7 +31,7 @@ export default class PlayScene extends Phaser.Scene {
                 payload: Actions.play.cost
             }
         ];
-        const playText = 'play instructions';
+        const playText = `Click to throw the ball for ${creatureState.getName()}!`;
         this.ui = new UIManager(
             this,
             playerState,
@@ -41,7 +41,7 @@ export default class PlayScene extends Phaser.Scene {
             ButtonHandler
         );
         this.ui.createActionButtons();
-        this.text = this.ui.createCustomText(200, 150, playText, 24);
+        this.text = this.ui.createCustomText(200, 100, playText, 24);
 
         this.input.keyboard.on('keydown-ESC', () => {
             this.closeHelp();
@@ -51,7 +51,7 @@ export default class PlayScene extends Phaser.Scene {
         this.creature = new ManualCreature(this, 400, 50, 'creature', 1);
         this.creature.setMood('neutral');
 
-        this.toy = this.add.image(200, 200, 'bubble');
+        this.toy = this.add.image(200, 200, 'ball');
 
         this.input.on('pointerdown', (pointer) => {
             if (this.throwOnCooldown) return;
@@ -71,12 +71,12 @@ export default class PlayScene extends Phaser.Scene {
             this.creature.x = Phaser.Math.Linear(
                 this.creature.x,
                 this.target.x,
-                0.08
+                0.04
             );
             this.creature.y = Phaser.Math.Linear(
                 this.creature.y,
                 this.target.y,
-                0.08
+                0.04
             );
             const dist = Phaser.Math.Distance.Between(
                 this.creature.x,
@@ -114,8 +114,9 @@ export default class PlayScene extends Phaser.Scene {
         this.creature.setMood('excited');
         this.joyGained++;
         this.showJoy();
+        this.completeAction();
         if (this.joyGained >= 3) {
-            this.endInteraction();
+            this.completeAction();
         }
     }
     showJoy() {
@@ -140,7 +141,9 @@ export default class PlayScene extends Phaser.Scene {
 
     completeAction() {
         creatureState.setStat(this.action.stat, this.action.amount);
-        this.endInteraction();
+        this.time.delayedCall(800, () => {
+            this.completeAction();
+        });
     }
 
     endInteraction() {

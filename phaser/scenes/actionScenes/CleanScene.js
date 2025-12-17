@@ -101,9 +101,10 @@ export default class CleanScene extends Phaser.Scene {
     }
 
     completeAction() {
-        console.log(this.action);
         creatureState.setStat(this.action.stat, this.action.amount);
-        this.endInteraction();
+        this.time.delayedCall(800, () => {
+            this.endInteraction();
+        });
     }
 
     endInteraction() {
