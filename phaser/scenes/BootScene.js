@@ -4,12 +4,23 @@ export default class BootScene extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('bg', 'phaser/assets/bg.png');
+        this.load.image('help-bg', 'phaser/assets/help-bg.png');
+
+        // ss and accessories
         this.load.spritesheet('creature', 'phaser/assets/creature-ss.png', {
             frameWidth: 160,
             frameHeight: 320
         });
-        this.load.image('bg', 'phaser/assets/bg.png');
-        this.load.image('help-bg', 'phaser/assets/help-bg.png');
+        this.load.setPath('phaser/assets/sprite-sheets/');
+        this.load.spritesheet('black-glasses', 'black-glasses.png', {
+            frameWidth: 160,
+            frameHeight: 320
+        });
+        this.load.spritesheet('red-glasses', 'red-glasses.png', {
+            frameWidth: 160,
+            frameHeight: 320
+        });
 
         // ui
         this.load.setPath('phaser/assets/ui/');
