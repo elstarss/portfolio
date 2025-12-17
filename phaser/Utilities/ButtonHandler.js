@@ -34,6 +34,13 @@ export const ButtonHandler = {
         scene.scene.sleep('CleanScene');
         scene.scene.launch('GameScene');
     },
+    refundPlay: (scene, actionConfig) => {
+        const amount = actionConfig;
+        playerState.setStat(PlayerStats.COINS, +amount);
+        console.log('amount');
+        scene.scene.sleep('PlayScene');
+        scene.scene.launch('GameScene');
+    },
     help: (scene) => {
         scene.scene.pause('GameScene');
         scene.scene.launch('HelpScene');

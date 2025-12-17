@@ -6,14 +6,13 @@ import FeedScene from './scenes/actionScenes/FeedScene.js';
 import HelpScene from './scenes/HelpScreen.js';
 import GameoverScene from './scenes/GameoverScene.js';
 import CleanScene from './scenes/actionScenes/CleanScene.js';
+import PlayScene from './scenes/actionScenes/PlayScene.js';
 
 export const config = {
     type: Phaser.AUTO,
     parent: 'game-container',
     scale: {
         mode: Phaser.Scale.FIT,
-        // autoCenter: Phaser.Scale.CENTER_BOTH,
-        // autoCenter: Phaser.Scale.NO_CENTER,
         width: 800,
         height: 500
     },
@@ -33,6 +32,7 @@ export const config = {
         ShopScene,
         FeedScene,
         CleanScene,
+        PlayScene,
         GameoverScene
     ],
     fps: {

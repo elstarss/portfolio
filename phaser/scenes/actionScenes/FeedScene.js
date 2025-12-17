@@ -21,7 +21,6 @@ export default class FeedScene extends Phaser.Scene {
         background.setDepth(0);
 
         // food
-        // Add sprite
         const food = this.add.sprite(400, 200, 'cookie');
         food.setInteractive(
             new Phaser.Geom.Rectangle(0, 0, food.width, food.height),
@@ -32,22 +31,19 @@ export default class FeedScene extends Phaser.Scene {
         this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
             gameObject.setPosition(dragX, dragY);
         });
-        // dropzone
         const zone = this.add.sprite(403, 301, 'feed-mouth');
         zone.setDepth(1);
         zone.setInteractive();
         zone.input.dropZone = true;
 
-        // highlight drop zone if object in right area
         this.input.on('dragenter', (pointer, gameObject, dropZone) => {
             zone.setTint(0x88ff88);
         });
-        // remove highlight if exits dropzone area
+
         this.input.on('dragleave', (pointer, gameObject, dropZone) => {
             zone.clearTint();
         });
 
-        // snap object to dropzone when placed in correct area
         this.input.on('drop', (pointer, gameObject, dropZone) => {
             gameObject.x = dropZone.x;
             gameObject.y = dropZone.y;
@@ -56,14 +52,13 @@ export default class FeedScene extends Phaser.Scene {
             this.completeAction();
         });
 
-        // snap back to start if dropped outside zone
         this.input.on('dragend', (pointer, gameObject, dropped) => {
             if (!dropped) {
                 gameObject.setPosition(400, 200);
             }
         });
 
-        // return button
+        // ui
         const buttonData = [
             {
                 x: 720,

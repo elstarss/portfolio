@@ -14,11 +14,10 @@ export class ManualCreature extends Creature {
     }
 
     updateMood() {
-        // console.log(scene.anims.exists('idle_happy'));
         const mood = this.mood;
-        // console.log(mood);
         if (mood === 'neutral') this.playNeutralIdle();
         else if (mood === 'happy') this.playHappyIdle();
+        else if (mood === 'walking') this.playWalk();
         else if (mood === 'excited') {
             this.playExcitedIdle();
         }

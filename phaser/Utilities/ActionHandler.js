@@ -21,7 +21,8 @@ export const Actions = {
         stat: CreatureStats.JOY,
         cost: 1,
         amount: +1,
-        requiresInteraction: false
+        requiresInteraction: true,
+        interactionScene: 'PlayScene'
     }
 };
 

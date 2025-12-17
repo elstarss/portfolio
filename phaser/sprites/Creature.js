@@ -9,7 +9,6 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
         this.setInteractive();
         this.setCollideWorldBounds(true);
         this.body.setBounce(1);
-        // this.setScale(1.2);
 
         Creature.createAnimations(scene);
     }
@@ -24,6 +23,9 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
     }
     playExcitedIdle() {
         this.anims.play('idle_excited', true);
+    }
+    playWalk() {
+        this.anims.play('walking', true);
     }
 
     freeze() {
@@ -83,6 +85,14 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
                     26, 27, 28, 29, 29, 30, 31, 32, 33, 34, 34, 34, 18, 18, 18,
                     19, 19, 19
                 ]
+            }),
+            frameRate: 4,
+            repeat: -1
+        });
+        scene.anims.create({
+            key: 'walking',
+            frames: scene.anims.generateFrameNumbers('creature', {
+                frames: [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]
             }),
             frameRate: 4,
             repeat: -1
