@@ -28,7 +28,7 @@ export default class CleanScene extends Phaser.Scene {
 
         // bubbles
         this.bubbles = this.add.group();
-        this.spawnBubbles(15);
+        this.spawnBubbles(12);
         this.remainingBubbles = this.bubbles.getLength();
 
         const cleanText = `POP the bubbles to give ${creatureState.getName()} a bath!`;
@@ -62,9 +62,9 @@ export default class CleanScene extends Phaser.Scene {
     update() {
         if (this.remainingBubbles <= 0) {
             this.completeAction();
-        } else if (this.remainingBubbles <= 5) {
+        } else if (this.remainingBubbles <= 4) {
             this.creature.setMood('excited');
-        } else if (this.remainingBubbles <= 10) {
+        } else if (this.remainingBubbles <= 7) {
             this.creature.setMood('happy');
         }
         this.creature.updateMood();
@@ -73,8 +73,8 @@ export default class CleanScene extends Phaser.Scene {
     spawnBubbles(count) {
         for (let i = 0; i < count; i++) {
             const bubble = this.add.image(
-                Phaser.Math.Between(300, 500),
-                Phaser.Math.Between(200, 350),
+                Phaser.Math.Between(320, 480),
+                Phaser.Math.Between(250, 350),
                 'bubble'
             );
             bubble.setInteractive({ useHandCursor: true });
