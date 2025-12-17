@@ -47,6 +47,10 @@ export default class BootScene extends Phaser.Scene {
         this.load.setPath('phaser/assets/feed/');
         this.load.image('feed-bg', 'feed-bg.png');
         this.load.image('feed-mouth', 'feed-mouth.png');
+
+        // clean
+        this.load.setPath('phaser/assets/clean/');
+        this.load.image('bubble', 'bubble-clean.png');
     }
 
     create() {

@@ -28,6 +28,12 @@ export const ButtonHandler = {
         scene.scene.sleep('FeedScene');
         scene.scene.launch('GameScene');
     },
+    refundClean: (scene, actionConfig) => {
+        const amount = actionConfig;
+        playerState.setStat(PlayerStats.COINS, +amount);
+        scene.scene.sleep('CleanScene');
+        scene.scene.launch('GameScene');
+    },
     help: (scene) => {
         scene.scene.pause('GameScene');
         scene.scene.launch('HelpScene');

@@ -8,28 +8,24 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
         this.setInteractive();
         this.setCollideWorldBounds(true);
-
-        // this.body.velocity.x = 50;
-        // this.body.velocity.y = 0;
         this.body.setBounce(1);
         // this.setScale(1.2);
 
         Creature.createAnimations(scene);
-        // this.play('idle_neutral');
     }
-
     playNeutralIdle() {
-        this.play('idle_neutral');
+        this.anims.play('idle_neutral', true);
     }
     playHappyIdle() {
-        this.play('idle_happy');
+        this.anims.play('idle_happy', true);
     }
     playSadIdle() {
-        this.play('idle_sad');
+        this.anims.play('idle_sad', true);
     }
     playExcitedIdle() {
-        this.play('idle_excited');
+        this.anims.play('idle_excited', true);
     }
+
     freeze() {
         const body = this.body;
         body.setVelocity(0, 0);
@@ -101,14 +97,5 @@ export class Creature extends Phaser.Physics.Arcade.Sprite {
         else if (mood === 'excited') {
             this.playExcitedIdle();
         } else this.playHappyIdle();
-    }
-
-    update() {
-        // const body = this.body;
-        // if (body.velocity.x > 0) {
-        //     body.velocity.y = 0;
-        // } else if (body.velocity.y > 0) {
-        //     this.anims.play('standing');
-        // }
     }
 }

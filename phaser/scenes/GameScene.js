@@ -25,7 +25,6 @@ export class GameScene extends Phaser.Scene {
         this.creature.setDepth(1);
 
         // ui
-
         // status bars
         const statusLevelData = [
             {
@@ -91,7 +90,6 @@ export class GameScene extends Phaser.Scene {
 
         this.handleStatChange = this.handleStatChange.bind(this);
         EventBus.on('creature:statChanged', this.handleStatChange);
-        // EventBus.on('creature:statChanged', this.checkIfHappy);
         EventBus.on('player:statChanged', this.handleStatChange);
 
         // cleanup listeners when scene stops

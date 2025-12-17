@@ -5,6 +5,7 @@ import ShopScene from './scenes/ShopScene.js';
 import FeedScene from './scenes/actionScenes/FeedScene.js';
 import HelpScene from './scenes/HelpScreen.js';
 import GameoverScene from './scenes/GameoverScene.js';
+import CleanScene from './scenes/actionScenes/CleanScene.js';
 
 export const config = {
     type: Phaser.AUTO,
@@ -20,7 +21,8 @@ export const config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { x: 0, y: 0 }
+            gravity: { x: 0, y: 0 },
+            debug: true
         }
     },
     scene: [
@@ -30,6 +32,7 @@ export const config = {
         HelpScene,
         ShopScene,
         FeedScene,
+        CleanScene,
         GameoverScene
     ],
     fps: {

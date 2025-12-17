@@ -20,11 +20,6 @@ export default class FeedScene extends Phaser.Scene {
             .setDisplaySize(this.scale.width, this.scale.height);
         background.setDepth(0);
 
-        // creature
-        // this.creature = new Creature(this, 200, 200, 'creature', 1);
-        // this.creature.setDepth(1);
-        // this.creature.freeze();
-
         // food
         // Add sprite
         const food = this.add.sprite(400, 200, 'cookie');
@@ -79,7 +74,6 @@ export default class FeedScene extends Phaser.Scene {
                 payload: Actions.feed.cost
             }
         ];
-        // need to decide how i want to handle the scene knowing which stat to refund from
         this.ui = new UIManager(
             this,
             playerState,

@@ -13,16 +13,16 @@ export const Actions = {
     clean: {
         stat: CreatureStats.CLEAN,
         cost: 1,
-        amount: +1,
-        requiresInteraction: false
+        amount: +3,
+        requiresInteraction: true,
+        interactionScene: 'CleanScene'
     },
     play: {
         stat: CreatureStats.JOY,
         cost: 1,
         amount: +1,
         requiresInteraction: false
-    }, 
-    
+    }
 };
 
 export function performAction(scene, action) {
