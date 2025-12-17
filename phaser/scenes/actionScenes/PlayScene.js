@@ -62,7 +62,6 @@ export default class PlayScene extends Phaser.Scene {
             });
         });
         this.joyGained = 0;
-        console.log(this.joyGained);
     }
 
     update() {
@@ -114,8 +113,8 @@ export default class PlayScene extends Phaser.Scene {
         this.creature.setMood('excited');
         this.joyGained++;
         this.showJoy();
-        this.completeAction();
         if (this.joyGained >= 3) {
+            this.joyGained = 0;
             this.completeAction();
         }
     }
@@ -141,8 +140,8 @@ export default class PlayScene extends Phaser.Scene {
 
     completeAction() {
         creatureState.setStat(this.action.stat, this.action.amount);
-        this.time.delayedCall(800, () => {
-            this.completeAction();
+        this.time.delayedCall(1200, () => {
+            this.endInteraction();
         });
     }
 

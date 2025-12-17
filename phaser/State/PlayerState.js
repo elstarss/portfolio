@@ -41,7 +41,7 @@ class PlayerState {
     }
     // next day
     payDay() {
-        const wage = Phaser.Math.Between(1, 10);
+        const wage = Phaser.Math.Between(1, 5);
         this.setStat(PlayerStats.COINS, wage);
         return wage;
     }

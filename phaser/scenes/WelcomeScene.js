@@ -26,14 +26,17 @@ export default class WelcomeScene extends Phaser.Scene {
             'Rex',
             'Meep',
             'Angel',
-            'George Michael',
+            'George',
             'Socks',
             'Mike',
             'Sparky',
             'Destroyer',
             'Gloomio',
             'Fury',
-            'Spots'
+            'Spots',
+            'Bluey',
+            'Twigs',
+            'Friend'
         ];
 
         const buttonData = [
