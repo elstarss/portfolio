@@ -3,8 +3,7 @@ import { playerState } from '../../State/PlayerState.js';
 import { creatureState } from '../../State/CreatureState.js';
 import { ButtonHandler } from '../../Utilities/ButtonHandler.js';
 import { Actions } from '../../Utilities/ActionHandler.js';
-import { ManualCreature } from '../../sprites/ManualCreature.js';
-import { Creature } from '../../sprites/Creature.js';
+import { ManualCreatureContainer } from '../../sprites/ManualCreatureContainer.js';
 
 export default class PlayScene extends Phaser.Scene {
     constructor() {
@@ -47,9 +46,10 @@ export default class PlayScene extends Phaser.Scene {
             this.closeHelp();
         });
         // game logic
-        Creature.createAnimations(this);
-        this.creature = new ManualCreature(this, 400, 50, 'creature', 1);
+        ManualCreatureContainer.createAnimations(this);
+        this.creature = new ManualCreatureContainer(this, 400, 200);
         this.creature.setMood('neutral');
+        this.creature.equipAccessory('red-glasses');
 
         this.toy = this.add.image(200, 200, 'ball');
 

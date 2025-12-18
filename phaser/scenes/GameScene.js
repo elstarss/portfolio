@@ -1,4 +1,3 @@
-import { Creature } from '../sprites/Creature.js';
 import { CreatureContainer } from '../sprites/CreatureContainer.js';
 import { creatureState } from '../State/CreatureState.js';
 import { playerState } from '../State/PlayerState.js';
@@ -21,16 +20,11 @@ export class GameScene extends Phaser.Scene {
         background.setDepth(0);
 
         // creature
-        Creature.createAnimations(this);
-        // this.creature = new Creature(this, 350, 250, 'creature', 1);
-        // this.creature.setDepth(1);
-
-        // CreatureContainer.createAnimations();
+        CreatureContainer.createAnimations(this);
         this.creatureContainer = new CreatureContainer(this, 350, 250);
         this.creatureContainer.equipAccessory('red-glasses');
 
         // ui
-        // status bars
         const statusLevelData = [
             {
                 stat: CreatureStats.HUNGER,
@@ -54,7 +48,6 @@ export class GameScene extends Phaser.Scene {
                 colour: '#f2c94cff'
             }
         ];
-        // buttons
         const buttonData = [
             { x: 100, y: 150, texture: 'feed-ui', actionKey: 'feed' },
             { x: 100, y: 250, texture: 'clean-ui', actionKey: 'clean' },
