@@ -24,6 +24,7 @@ export default class CleanScene extends Phaser.Scene {
         ManualCreatureContainer.createAnimations(this);
         this.creatureContainer = new ManualCreatureContainer(this, 400, 200);
         this.creatureContainer.setScale(1.25);
+        this.creatureContainer.checkAccessoriesWorn();
         this.creatureContainer.setMood('neutral');
 
         // bubbles

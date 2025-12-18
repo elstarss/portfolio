@@ -23,11 +23,20 @@ export const Actions = {
         amount: +3,
         requiresInteraction: true,
         interactionScene: 'PlayScene'
+    },
+    glasses: {
+        accessoryKey: 'black-glasses'
+    }
+};
+export const ShopActions = {
+    glasses: {
+        black: 'black-glasses',
+        red: 'red-glasses',
+        heart: 'heart-glasses'
     }
 };
 
 export function performAction(scene, action) {
-    console.log(creatureState.getAllCreatureStats());
     const { stat, cost, amount, requiresInteraction, interactionScene } =
         action;
     const current = creatureState.getStat(stat);

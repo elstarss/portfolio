@@ -49,7 +49,7 @@ export default class PlayScene extends Phaser.Scene {
         ManualCreatureContainer.createAnimations(this);
         this.creature = new ManualCreatureContainer(this, 400, 200);
         this.creature.setMood('neutral');
-        this.creature.equipAccessory('red-glasses');
+        this.creature.checkAccessoriesWorn();
 
         this.toy = this.add.image(200, 200, 'ball');
 

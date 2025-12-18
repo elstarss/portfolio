@@ -37,7 +37,6 @@ export const ButtonHandler = {
     refundPlay: (scene, actionConfig) => {
         const amount = actionConfig;
         playerState.setStat(PlayerStats.COINS, +amount);
-        console.log('amount');
         scene.scene.sleep('PlayScene');
         scene.scene.launch('GameScene');
     },
@@ -84,9 +83,15 @@ export const ButtonHandler = {
         scene.rollNameAnimation(textObject, finalName);
         scene.currentName = finalName;
     },
+    // wardrobe: (scene) => {
+    //     scene.scene.sleep(scene);
+    //     scene.scene.launch('WardrobeScene');
+    // },
 
     // shop handlers
     'buy-soap': () => console.log('buying soap'),
     'buy-food': () => console.log('buying food'),
-    'buy-toys': () => console.log('buying toys')
+    glasses: (scene, accessoryKey) => {
+        playerState.addAccessory(accessoryKey);
+    }
 };

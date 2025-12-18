@@ -4,7 +4,7 @@ import { EventBus } from '../Utilities/EventBus.js';
 class PlayerState {
     #stats = {
         [PlayerStats.COINS]: { value: 5, max: 500000 },
-        [PlayerStats.NUMBEROFHATS]: { value: 0, max: 500000 }
+        [PlayerStats.ACCESSORIES]: []
     };
     constructor() {
         this.initialStats = JSON.parse(JSON.stringify(this.#stats));
@@ -34,10 +34,18 @@ class PlayerState {
     getMaxStat(stat) {
         return this.#stats[stat].max;
     }
+    addAccessory(accessoryKey) {
+        if (this.#stats.accessories.includes(accessoryKey)) return;
+        this.#stats.accessories = [];
+        this.#stats.accessories.push(accessoryKey);
+    }
     getAllPlayerStats() {
         return Object.fromEntries(
             Object.entries(this.#stats).map(([key, stat]) => [key, stat.value])
         );
+    }
+    getAccessories() {
+        return this.#stats.accessories;
     }
     // next day
     payDay() {
@@ -50,7 +58,7 @@ class PlayerState {
         for (const stat in this.#stats) {
             EventBus.emit('player:statChanged', stat, this.#stats[stat].value);
         }
-        console.log(this.getStat(PlayerStats.COINS));
+        this.#stats.accessories = [];
     }
 }
 

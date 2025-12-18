@@ -4,6 +4,7 @@ import { EventBus } from '../Utilities/EventBus.js';
 import { playerState } from '../State/PlayerState.js';
 import UIManager from '../UI/UIManager.js';
 import { ButtonHandler } from '../Utilities/ButtonHandler.js';
+import { Actions, ShopActions } from '../Utilities/ActionHandler.js';
 
 export default class ShopScene extends Phaser.Scene {
     constructor() {
@@ -20,9 +21,27 @@ export default class ShopScene extends Phaser.Scene {
         // buttons
         const buttonData = [
             { x: 720, y: 50, texture: 'exit-ui', actionKey: 'home' },
-            { x: 200, y: 250, texture: 'buy-ui', actionKey: 'buy-food' },
-            { x: 400, y: 250, texture: 'buy-ui', actionKey: 'buy-soap' },
-            { x: 600, y: 250, texture: 'buy-ui', actionKey: 'buy-toys' }
+            {
+                x: 200,
+                y: 250,
+                texture: 'red-glasses-ui',
+                actionKey: 'glasses',
+                accessoryKey: ShopActions.glasses.red
+            },
+            {
+                x: 400,
+                y: 250,
+                texture: 'heart-glasses-ui',
+                actionKey: 'glasses',
+                accessoryKey: ShopActions.glasses.heart
+            },
+            {
+                x: 600,
+                y: 250,
+                texture: 'black-glasses-ui',
+                actionKey: 'glasses',
+                accessoryKey: ShopActions.glasses.black
+            }
         ];
 
         this.ui = new UIManager(
@@ -31,7 +50,8 @@ export default class ShopScene extends Phaser.Scene {
             creatureState,
             [],
             buttonData,
-            ButtonHandler
+            ButtonHandler,
+            ShopActions
         );
 
         this.buttons = this.ui.createActionButtons();

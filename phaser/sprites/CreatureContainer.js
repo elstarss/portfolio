@@ -1,5 +1,5 @@
 import { creatureState } from '../State/CreatureState.js';
-
+import { playerState } from '../State/PlayerState.js';
 export class CreatureContainer extends Phaser.GameObjects.Container {
     constructor(scene, x, y) {
         super(scene, x, y);
@@ -11,8 +11,8 @@ export class CreatureContainer extends Phaser.GameObjects.Container {
 
         this.base = scene.add.sprite(0, 0, 'creature');
         this.add(this.base);
-
         this.accessories = {};
+        this.accessoryKeys = [];
 
         CreatureContainer.createAnimations(scene);
     }
@@ -31,12 +31,32 @@ export class CreatureContainer extends Phaser.GameObjects.Container {
             sprite.setFrame(this.base.frame.name);
         });
     }
-
     playAnim(key) {
         this.base.play(key, true);
         Object.values(this.accessories).forEach((sprite) => {
             sprite.setFrame(this.base.frame.name);
         });
+    }
+    equipAccessory(accessoryKey, offsetX = 0, offsetY = 0) {
+        if (this.accessories[accessoryKey]) return;
+        const sprite = this.scene.add.sprite(offsetX, offsetY, accessoryKey);
+        this.add(sprite);
+        this.accessories[accessoryKey] = sprite;
+        this.accessoryKeys.push(accessoryKey);
+    }
+    removeAccessory(accessoryKey) {
+        if (this.accessories[accessoryKey]) {
+            delete this.accessories[accessoryKey];
+        }
+    }
+    checkAccessoriesWorn() {
+        const accessoriesWorn = playerState.getAccessories();
+        if (
+            accessoriesWorn.sort().join(',') !==
+            this.accessoryKeys.sort().join(',')
+        ) {
+            this.equipAccessory(accessoriesWorn[0]);
+        }
     }
     playNeutralIdle() {
         this.playAnim('idle_neutral');
@@ -52,19 +72,6 @@ export class CreatureContainer extends Phaser.GameObjects.Container {
     }
     playWalk() {
         this.playAnim('walking');
-    }
-
-    equipAccessory(accessoryKey, offsetX = 0, offsetY = 0) {
-        if (this.accessories[accessoryKey]) return;
-        const sprite = this.scene.add.sprite(offsetX, offsetY, accessoryKey);
-        this.add(sprite);
-        this.accessories[accessoryKey] = sprite;
-    }
-    equipBlackGlasses() {
-        if (this.accessories.glasses) return;
-        const glasses = this.scene.add.sprite(0, 0, 'black-glasses');
-        this.add(glasses);
-        this.accessories.glasses = glasses;
     }
 
     freeze() {

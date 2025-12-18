@@ -22,7 +22,7 @@ export class GameScene extends Phaser.Scene {
         // creature
         CreatureContainer.createAnimations(this);
         this.creatureContainer = new CreatureContainer(this, 350, 250);
-        this.creatureContainer.equipAccessory('red-glasses');
+        this.creatureContainer.checkAccessoriesWorn();
 
         // ui
         const statusLevelData = [
@@ -52,8 +52,9 @@ export class GameScene extends Phaser.Scene {
             { x: 100, y: 150, texture: 'feed-ui', actionKey: 'feed' },
             { x: 100, y: 250, texture: 'clean-ui', actionKey: 'clean' },
             { x: 100, y: 350, texture: 'pet-ui', actionKey: 'pet' },
-            { x: 550, y: 430, texture: 'shop-ui', actionKey: 'shop' },
-            { x: 700, y: 430, texture: 'nextDay-ui', actionKey: 'next-day' },
+            { x: 550, y: 400, texture: 'shop-ui', actionKey: 'shop' },
+            { x: 700, y: 400, texture: 'nextDay-ui', actionKey: 'next-day' },
+            // { x: 550, y: 350, texture: 'wardrobe-ui', actionKey: 'wardrobe' },
             { x: 720, y: 50, texture: 'help-ui', actionKey: 'help' }
         ];
         this.ui = new UIManager(

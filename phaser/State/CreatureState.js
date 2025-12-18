@@ -9,10 +9,10 @@ class CreatureState {
         [CreatureStats.FRIENDSHIP]: { value: 0, max: 50000 },
         [CreatureStats.AGE]: { value: 0, max: 50000 }
     };
+    #accessoriesOn = [];
     constructor() {
         this.initialStats = JSON.parse(JSON.stringify(this.#stats));
     }
-
     static getInstance() {
         if (!CreatureState.instance) {
             CreatureState.instance = new CreatureState();
@@ -103,6 +103,11 @@ class CreatureState {
         }
         return emptyStatsArr.length == 0 ? false : emptyStatsArr;
     }
+    // equipAccessory(accessoryKey) {
+    //     if (this.#accessoriesOn[accessoryKey]) return;
+    //     else this.#accessoriesOn.push(accessoryKey);
+    //     console.log(this.#accessoriesOn);
+    // }
 
     resetAll() {
         this.#stats = JSON.parse(JSON.stringify(this.initialStats));
