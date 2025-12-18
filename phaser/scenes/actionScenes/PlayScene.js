@@ -111,7 +111,7 @@ export default class PlayScene extends Phaser.Scene {
     }
     chaseToy() {
         this.creature.setMood('walking');
-        this.target = new Phaser.Math.Vector2(this.toy.x, this.toy.y - 30);
+        this.target = new Phaser.Math.Vector2(this.toy.x, this.toy.y - 50);
     }
 
     onCatchToy() {
@@ -125,6 +125,7 @@ export default class PlayScene extends Phaser.Scene {
         }
     }
     showJoy() {
+        EventBus.emit(AUDIO.PLAY_SFX, 'ding');
         const icon = this.add
             .image(this.creature.x, this.creature.y - 20, 'star')
             .setScale(0.5);

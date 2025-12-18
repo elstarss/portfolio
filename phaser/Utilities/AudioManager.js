@@ -38,11 +38,14 @@ export class AudioManager {
         this.bgMusic = undefined;
     }
 
-    playSfx(key) {
-        const chosen = Array.isArray(key)
-            ? Phaser.Utils.Array.GetRandom(key)
-            : key;
-        this.scene.sound.play(chosen, {
+    playSfx(keyOrKeys) {
+        console.log(keyOrKeys);
+
+        const key = Array.isArray(keyOrKeys)
+            ? Phaser.Utils.Array.GetRandom(keyOrKeys)
+            : keyOrKeys;
+        console.log(key);
+        this.scene.sound.play(key, {
             volume: this.isMuted ? 0 : this.volume
         });
     }

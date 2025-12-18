@@ -5,6 +5,7 @@ import { playerState } from '../../State/PlayerState.js';
 import { Actions } from '../../Utilities/ActionHandler.js';
 import { AudioManager } from '../../Utilities/AudioManager.js';
 import { AUDIO } from '../../State/Events.js';
+import { EventBus } from '../../Utilities/EventBus.js';
 export default class FeedScene extends Phaser.Scene {
     buttonData = this.buttonData;
     constructor() {
@@ -92,6 +93,7 @@ export default class FeedScene extends Phaser.Scene {
     }
 
     completeAction() {
+        EventBus.emit(AUDIO.PLAY_SFX, 'crunch');
         creatureState.setStat(this.action.stat, this.action.amount);
         this.time.delayedCall(450, () => {
             this.endInteraction();
