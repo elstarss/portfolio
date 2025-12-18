@@ -32,7 +32,8 @@ export default class PlayScene extends Phaser.Scene {
                 texture: 'exit-ui',
                 actionKey: 'refundPlay',
                 linkedAction: 'play',
-                payload: Actions.play.cost
+                payload: Actions.play.cost,
+                standardClick: true
             }
         ];
         const playText = `Click to throw the ball for ${creatureState.getName()}!`;
@@ -75,12 +76,12 @@ export default class PlayScene extends Phaser.Scene {
             this.creature.x = Phaser.Math.Linear(
                 this.creature.x,
                 this.target.x,
-                0.04
+                0.05
             );
             this.creature.y = Phaser.Math.Linear(
                 this.creature.y,
                 this.target.y,
-                0.04
+                0.05
             );
             const dist = Phaser.Math.Distance.Between(
                 this.creature.x,

@@ -111,7 +111,9 @@ export default class UIManager {
                 data.actionKey
             );
             button.setClickHandler(() => {
-                EventBus.emit(AUDIO.PLAY_SFX, 'click');
+                if (data.standardClick == true) {
+                    EventBus.emit(AUDIO.PLAY_SFX, 'click');
+                }
                 const handler = this.handlers[data.actionKey];
                 const payload = data.payload || data.accessoryKey || null;
                 if (handler) handler(this.scene, payload);

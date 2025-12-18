@@ -47,13 +47,15 @@ export default class WelcomeScene extends Phaser.Scene {
                 y: 300,
                 texture: 'generate-ui',
                 actionKey: 'roll',
-                payload: { nameOptions }
+                payload: { nameOptions },
+                standardClick: true
             },
             {
                 x: 600,
                 y: 370,
                 texture: 'start-ui',
-                actionKey: 'start'
+                actionKey: 'start',
+                standardClick: true
             }
         ];
         this.ui = new UIManager(

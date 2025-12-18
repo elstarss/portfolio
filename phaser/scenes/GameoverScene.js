@@ -36,7 +36,8 @@ export default class GameoverScene extends Phaser.Scene {
                 x: 400,
                 y: 250,
                 texture: 'start-over-ui',
-                actionKey: 'start-over'
+                actionKey: 'start-over',
+                standardClick: true
             }
         ];
         this.ui = new UIManager(

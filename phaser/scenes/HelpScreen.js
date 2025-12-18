@@ -23,7 +23,13 @@ export default class HelpScene extends Phaser.Scene {
         });
 
         const buttonData = [
-            { x: 570, y: 100, texture: 'exit-ui', actionKey: 'exit' }
+            {
+                x: 570,
+                y: 100,
+                texture: 'exit-ui',
+                actionKey: 'exit',
+                standardClick: true
+            }
         ];
         const helpText =
             "You need some help? No problem! \n\nYour goal is to keep this lil guy alive by making sure their stat levels don't dip too low- if you try to start a day with a stat depleted there will be consequences.. so best to avoid that! \nFeeding and cleaning your critter cost coins, which you can pay for from your daily wage. Your employer is unfortunately flakey so your wage does vary day to day, so mind your coins and save for the items in the shop!";

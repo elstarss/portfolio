@@ -70,7 +70,8 @@ export default class FeedScene extends Phaser.Scene {
                 texture: 'exit-ui',
                 actionKey: 'refundFeed',
                 linkedAction: 'feed',
-                payload: Actions.feed.cost
+                payload: Actions.feed.cost,
+                standardClick: true
             }
         ];
         this.ui = new UIManager(

@@ -1,6 +1,8 @@
 import { creatureState } from '../State/CreatureState.js';
 import { playerState } from '../State/PlayerState.js';
 import { CreatureStats, PlayerStats } from '../State/Stats.js';
+import { EventBus } from './EventBus.js';
+import { AUDIO } from '../State/Events.js';
 
 export const Actions = {
     feed: {
@@ -51,6 +53,8 @@ export function performAction(scene, action) {
     if (checkCoins(cost) == false) {
         return false;
     }
+    EventBus.emit(AUDIO.PLAY_SFX, 'click');
+
     // player has enough -> reduce coins
     playerState.setStat(PlayerStats.COINS, -cost);
 

@@ -45,7 +45,8 @@ export default class CleanScene extends Phaser.Scene {
                 texture: 'exit-ui',
                 actionKey: 'refundClean',
                 linkedAction: 'clean',
-                payload: Actions.clean.cost
+                payload: Actions.clean.cost,
+                standardClick: true
             }
         ];
 

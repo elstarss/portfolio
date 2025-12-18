@@ -98,7 +98,7 @@ export const ButtonHandler = {
         const cost = ShopActions.glasses.cost;
         if (checkCoins(cost) == true) {
             playerState.addAccessory(accessoryKey);
-            EventBus.emit(AUDIO.PLAY_SFX, 'crunch');
+            EventBus.emit(AUDIO.PLAY_SFX, 'cash-register');
             playerState.setStat(PlayerStats.COINS, -cost);
             return;
         } else {
