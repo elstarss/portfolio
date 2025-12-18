@@ -102,6 +102,7 @@ export const ButtonHandler = {
             playerState.setStat(PlayerStats.COINS, -cost);
             return;
         } else {
+            EventBus.emit(AUDIO.PLAY_SFX, 'error');
             console.log('not enough money');
         }
     }

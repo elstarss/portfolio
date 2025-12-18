@@ -21,7 +21,13 @@ export default class ShopScene extends Phaser.Scene {
 
         // buttons
         const buttonData = [
-            { x: 720, y: 50, texture: 'exit-ui', actionKey: 'home' },
+            {
+                x: 720,
+                y: 50,
+                texture: 'exit-ui',
+                actionKey: 'home',
+                standardClick: true
+            },
             {
                 x: 200,
                 y: 250,

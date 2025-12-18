@@ -46,13 +46,15 @@ export function performAction(scene, action) {
     const max = creatureState.getMaxStat(stat);
 
     // is stat maxxed already?
-    if (current >= max) {
-        console.log(`${stat} is already full!`);
+    if (current >= max || checkCoins(cost) == false) {
+        EventBus.emit(AUDIO.PLAY_SFX, 'error');
         return false;
     }
-    if (checkCoins(cost) == false) {
-        return false;
-    }
+    // might use diff sfx here later
+    // if (checkCoins(cost) == false) {
+    //     EventBus.emit(AUDIO.PLAY_SFX, 'error');
+    //     return false;
+    // }
     EventBus.emit(AUDIO.PLAY_SFX, 'click');
 
     // player has enough -> reduce coins

@@ -2,6 +2,8 @@ import { creatureState } from '../State/CreatureState.js';
 import { playerState } from '../State/PlayerState.js';
 import UIManager from '../UI/UIManager.js';
 import { ButtonHandler } from '../Utilities/ButtonHandler.js';
+import { EventBus } from '../Utilities/EventBus.js';
+import { AUDIO } from '../State/Events.js';
 
 export default class GameoverScene extends Phaser.Scene {
     emptyStatsArr = ['jf'];
@@ -52,6 +54,8 @@ export default class GameoverScene extends Phaser.Scene {
         this.buttons.forEach((button) => button.setScale(1.5));
         this.text = this.ui.createCustomText(400, 150, endGameText, 24);
         this.text.setWordWrapWidth(550).setOrigin(0.5);
+
+        EventBus.emit(AUDIO.PLAY_SFX, 'game-over');
     }
     buildGameOverMessage(emptyStatsArr, statFailureReasons) {
         const array = emptyStatsArr == undefined ? ['failed'] : emptyStatsArr;
