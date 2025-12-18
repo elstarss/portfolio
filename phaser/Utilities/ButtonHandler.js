@@ -4,6 +4,8 @@ import { playerState } from '../State/PlayerState.js';
 import { PlayerStats } from '../State/Stats.js';
 import { creatureState } from '../State/CreatureState.js';
 import { checkCoins } from './ActionHandler.js';
+import { EventBus } from './EventBus.js';
+import { AUDIO } from '../State/Events.js';
 
 export const ButtonHandler = {
     start: (scene) => {
@@ -96,6 +98,7 @@ export const ButtonHandler = {
         const cost = ShopActions.glasses.cost;
         if (checkCoins(cost) == true) {
             playerState.addAccessory(accessoryKey);
+            EventBus.emit(AUDIO.PLAY_SFX, 'crunch');
             playerState.setStat(PlayerStats.COINS, -cost);
             return;
         } else {
