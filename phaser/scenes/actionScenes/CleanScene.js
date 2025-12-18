@@ -91,6 +91,7 @@ export default class CleanScene extends Phaser.Scene {
         }
     }
     popBubble(bubble) {
+        EventBus.emit(AUDIO.PLAY_SFX, 'pop');
         this.tweens.add({
             targets: bubble,
             scale: 1.4,
@@ -109,7 +110,7 @@ export default class CleanScene extends Phaser.Scene {
 
     completeAction() {
         creatureState.setStat(this.action.stat, this.action.amount);
-        this.time.delayedCall(1000, () => {
+        this.time.delayedCall(1200, () => {
             this.endInteraction();
         });
     }

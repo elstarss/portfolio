@@ -4,7 +4,8 @@ import { EventBus } from '../Utilities/EventBus.js';
 import { playerState } from '../State/PlayerState.js';
 import UIManager from '../UI/UIManager.js';
 import { ButtonHandler } from '../Utilities/ButtonHandler.js';
-import { Actions, ShopActions } from '../Utilities/ActionHandler.js';
+import { ShopActions } from '../Utilities/ActionHandler.js';
+import { AUDIO } from '../State/Events.js';
 
 export default class ShopScene extends Phaser.Scene {
     constructor() {
@@ -81,6 +82,7 @@ export default class ShopScene extends Phaser.Scene {
     }
 
     closeHelp() {
+        EventBus.emit(AUDIO.PLAY_SFX, 'click');
         ButtonHandler.home(this);
     }
 }

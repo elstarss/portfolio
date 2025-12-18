@@ -2,6 +2,8 @@ import { creatureState } from '../State/CreatureState.js';
 import { playerState } from '../State/PlayerState.js';
 import UIManager from '../UI/UIManager.js';
 import { ButtonHandler } from '../Utilities/ButtonHandler.js';
+import { EventBus } from '../Utilities/EventBus.js';
+import { AUDIO } from '../State/Events.js';
 
 export default class HelpScene extends Phaser.Scene {
     constructor() {
@@ -39,6 +41,7 @@ export default class HelpScene extends Phaser.Scene {
         this.text.setWordWrapWidth(350).setOrigin(0.5);
 
         this.input.keyboard.on('keydown-ESC', () => {
+            EventBus.emit(AUDIO.PLAY_SFX, 'click');
             this.closeHelp();
         });
     }

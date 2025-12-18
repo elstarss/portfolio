@@ -1,6 +1,7 @@
 import { creatureState } from '../State/CreatureState.js';
 import { playerState } from '../State/PlayerState.js';
 import UIManager from '../UI/UIManager.js';
+import { AudioManager } from '../Utilities/AudioManager.js';
 import { ButtonHandler } from '../Utilities/ButtonHandler.js';
 
 export default class WelcomeScene extends Phaser.Scene {
@@ -15,6 +16,7 @@ export default class WelcomeScene extends Phaser.Scene {
             .setOrigin(0)
             .setDisplaySize(this.scale.width, this.scale.height);
         background.setDepth(0);
+        this.audioManager = new AudioManager(this);
 
         const welcomeText =
             "First things first, give your new friend a name! Click roll until you're happy with the name locked in, then start.";
