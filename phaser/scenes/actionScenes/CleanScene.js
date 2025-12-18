@@ -1,10 +1,9 @@
-import { ManualCreature } from '../../sprites/ManualCreature.js';
-import { Creature } from '../../sprites/Creature.js';
 import UIManager from '../../UI/UIManager.js';
 import { playerState } from '../../State/PlayerState.js';
 import { creatureState } from '../../State/CreatureState.js';
 import { ButtonHandler } from '../../Utilities/ButtonHandler.js';
 import { Actions } from '../../Utilities/ActionHandler.js';
+import { ManualCreatureContainer } from '../../sprites/ManualCreatureContainer.js';
 
 export default class CleanScene extends Phaser.Scene {
     constructor() {
@@ -21,10 +20,11 @@ export default class CleanScene extends Phaser.Scene {
             .setOrigin(0)
             .setDisplaySize(this.scale.width, this.scale.height);
         background.setDepth(0);
-        Creature.createAnimations(this);
-        this.creature = new ManualCreature(this, 400, 50, 'creature', 1);
-        this.creature.setScale(1.25);
-        this.creature.setMood('neutral');
+
+        ManualCreatureContainer.createAnimations(this);
+        this.creatureContainer = new ManualCreatureContainer(this, 400, 200);
+        this.creatureContainer.setScale(1.25);
+        this.creatureContainer.setMood('neutral');
 
         // bubbles
         this.bubbles = this.add.group();
@@ -63,11 +63,11 @@ export default class CleanScene extends Phaser.Scene {
         if (this.remainingBubbles <= 0) {
             this.completeAction();
         } else if (this.remainingBubbles <= 4) {
-            this.creature.setMood('excited');
+            this.creatureContainer.setMood('excited');
         } else if (this.remainingBubbles <= 7) {
-            this.creature.setMood('happy');
+            this.creatureContainer.setMood('happy');
         }
-        this.creature.updateMood();
+        this.creatureContainer.updateMood();
     }
 
     spawnBubbles(count) {

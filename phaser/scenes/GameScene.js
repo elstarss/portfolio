@@ -22,12 +22,12 @@ export class GameScene extends Phaser.Scene {
 
         // creature
         Creature.createAnimations(this);
-        this.creature = new Creature(this, 350, 250, 'creature', 1);
-        this.creature.setDepth(1);
+        // this.creature = new Creature(this, 350, 250, 'creature', 1);
+        // this.creature.setDepth(1);
 
         // CreatureContainer.createAnimations();
-        // this.creatureContainer = new CreatureContainer(this, 600, 250);
-        // this.creatureContainer.equipAccessory('red-glasses');
+        this.creatureContainer = new CreatureContainer(this, 350, 250);
+        this.creatureContainer.equipAccessory('red-glasses');
 
         // ui
         // status bars
@@ -106,8 +106,7 @@ export class GameScene extends Phaser.Scene {
 
     update() {
         this.UIBars.forEach((bar) => bar.update());
-        this.creature.updateMood();
-        // this.creatureContainer.updateMood();
-        // this.creatureContainer.update();
+        this.creatureContainer.updateMood();
+        this.creatureContainer.update();
     }
 }

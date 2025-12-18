@@ -21,6 +21,10 @@ export default class BootScene extends Phaser.Scene {
             frameWidth: 160,
             frameHeight: 320
         });
+        this.load.spritesheet('heart-glasses', 'heart-glasses.png', {
+            frameWidth: 160,
+            frameHeight: 320
+        });
 
         // ui
         this.load.setPath('phaser/assets/ui/');
