@@ -39,7 +39,12 @@ export class AudioManager {
     }
 
     playSfx(key) {
-        this.scene.sound.play(key, { volume: this.isMuted ? 0 : this.volume });
+        const chosen = Array.isArray(key)
+            ? Phaser.Utils.Array.GetRandom(key)
+            : key;
+        this.scene.sound.play(chosen, {
+            volume: this.isMuted ? 0 : this.volume
+        });
     }
 
     toggleMute() {

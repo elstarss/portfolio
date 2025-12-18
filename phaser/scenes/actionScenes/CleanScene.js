@@ -91,7 +91,7 @@ export default class CleanScene extends Phaser.Scene {
         }
     }
     popBubble(bubble) {
-        EventBus.emit(AUDIO.PLAY_SFX, 'pop');
+        EventBus.emit(AUDIO.PLAY_SFX, ['pop-1', 'pop-2', 'pop-3']);
         this.tweens.add({
             targets: bubble,
             scale: 1.4,

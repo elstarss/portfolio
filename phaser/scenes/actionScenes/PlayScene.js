@@ -96,6 +96,7 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     throwToy(x, y) {
+        EventBus.emit(AUDIO.PLAY_SFX, ['throw-1', 'throw-2', 'throw-3']);
         this.toy.setPosition(this.creature.x, this.creature.y);
         this.tweens.add({
             targets: this.toy,
