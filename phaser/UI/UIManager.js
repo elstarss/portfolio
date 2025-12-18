@@ -1,5 +1,7 @@
+import { AUDIO } from '../State/Events.js';
 import { PlayerStats } from '../State/Stats.js';
 import { Actions } from '../Utilities/ActionHandler.js';
+import { EventBus } from '../Utilities/EventBus.js';
 import UIBar from './UIBar.js';
 import UIButton from './UIButton.js';
 
@@ -109,6 +111,7 @@ export default class UIManager {
                 data.actionKey
             );
             button.setClickHandler(() => {
+                EventBus.emit(AUDIO.PLAY_SFX, 'click');
                 const handler = this.handlers[data.actionKey];
                 const payload = data.payload || data.accessoryKey || null;
                 if (handler) handler(this.scene, payload);

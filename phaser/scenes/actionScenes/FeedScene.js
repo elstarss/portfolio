@@ -3,6 +3,8 @@ import { ButtonHandler } from '../../Utilities/ButtonHandler.js';
 import UIManager from '../../UI/UIManager.js';
 import { playerState } from '../../State/PlayerState.js';
 import { Actions } from '../../Utilities/ActionHandler.js';
+import { AudioManager } from '../../Utilities/AudioManager.js';
+import { AUDIO } from '../../State/Events.js';
 export default class FeedScene extends Phaser.Scene {
     buttonData = this.buttonData;
     constructor() {
@@ -57,6 +59,7 @@ export default class FeedScene extends Phaser.Scene {
                 gameObject.setPosition(400, 200);
             }
         });
+        this.audioManager = new AudioManager(this);
 
         // ui
         const buttonData = [
@@ -84,6 +87,7 @@ export default class FeedScene extends Phaser.Scene {
         });
     }
     closeHelp() {
+        EventBus.emit(AUDIO.PLAY_SFX, 'click');
         ButtonHandler.refundFeed(this, Actions.feed.cost);
     }
 

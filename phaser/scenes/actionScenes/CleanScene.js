@@ -4,6 +4,9 @@ import { creatureState } from '../../State/CreatureState.js';
 import { ButtonHandler } from '../../Utilities/ButtonHandler.js';
 import { Actions } from '../../Utilities/ActionHandler.js';
 import { ManualCreatureContainer } from '../../sprites/ManualCreatureContainer.js';
+import { AudioManager } from '../../Utilities/AudioManager.js';
+import { EventBus } from '../../Utilities/EventBus.js';
+import { AUDIO } from '../../State/Events.js';
 
 export default class CleanScene extends Phaser.Scene {
     constructor() {
@@ -26,6 +29,8 @@ export default class CleanScene extends Phaser.Scene {
         this.creatureContainer.setScale(1.25);
         this.creatureContainer.checkAccessoriesWorn();
         this.creatureContainer.setMood('neutral');
+
+        this.audioManager = new AudioManager(this);
 
         // bubbles
         this.bubbles = this.add.group();
@@ -98,6 +103,7 @@ export default class CleanScene extends Phaser.Scene {
         });
     }
     closeHelp() {
+        EventBus.emit(AUDIO.PLAY_SFX, 'click');
         ButtonHandler.refundClean(this, Actions.clean.cost);
     }
 

@@ -4,6 +4,9 @@ import { creatureState } from '../../State/CreatureState.js';
 import { ButtonHandler } from '../../Utilities/ButtonHandler.js';
 import { Actions } from '../../Utilities/ActionHandler.js';
 import { ManualCreatureContainer } from '../../sprites/ManualCreatureContainer.js';
+import { EventBus } from '../../Utilities/EventBus.js';
+import { AUDIO } from '../../State/Events.js';
+import { AudioManager } from '../../Utilities/AudioManager.js';
 
 export default class PlayScene extends Phaser.Scene {
     constructor() {
@@ -20,6 +23,8 @@ export default class PlayScene extends Phaser.Scene {
             .setOrigin(0)
             .setDisplaySize(this.scale.width, this.scale.height);
         background.setDepth(0);
+        this.audioManager = new AudioManager(this);
+
         const buttonData = [
             {
                 x: 720,
@@ -135,6 +140,7 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     closeHelp() {
+        EventBus.emit(AUDIO.PLAY_SFX, 'click');
         ButtonHandler.refundFeed(this, Actions.play.cost);
     }
 

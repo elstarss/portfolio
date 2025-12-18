@@ -74,6 +74,9 @@ export default class BootScene extends Phaser.Scene {
         // play
         this.load.setPath('phaser/assets/play/');
         this.load.image('ball', 'ball.png');
+
+        this.load.setPath('phaser/assets/audio/');
+        this.load.audio('click', 'mouse-click.mp3');
     }
 
     create() {

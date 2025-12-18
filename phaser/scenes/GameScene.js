@@ -4,6 +4,7 @@ import { playerState } from '../State/PlayerState.js';
 import { PlayerStats } from '../State/Stats.js';
 import { CreatureStats } from '../State/Stats.js';
 import UIManager from '../UI/UIManager.js';
+import { AudioManager } from '../Utilities/AudioManager.js';
 import { ButtonHandler } from '../Utilities/ButtonHandler.js';
 import { EventBus } from '../Utilities/EventBus.js';
 
@@ -18,6 +19,9 @@ export class GameScene extends Phaser.Scene {
             .setOrigin(0)
             .setDisplaySize(this.scale.width, this.scale.height);
         background.setDepth(0);
+
+        // audio
+        this.audioManager = new AudioManager(this);
 
         // creature
         CreatureContainer.createAnimations(this);
