@@ -30,6 +30,7 @@ export const Actions = {
 };
 export const ShopActions = {
     glasses: {
+        cost: 5,
         black: 'black-glasses',
         red: 'red-glasses',
         heart: 'heart-glasses'
@@ -47,10 +48,7 @@ export function performAction(scene, action) {
         console.log(`${stat} is already full!`);
         return false;
     }
-    // does player have enough coins
-    const coins = playerState.getStat(PlayerStats.COINS);
-    if (coins < cost) {
-        console.log(`not enough coins! Need ${cost}.`);
+    if (checkCoins(cost) == false) {
         return false;
     }
     // player has enough -> reduce coins
@@ -67,4 +65,13 @@ export function performAction(scene, action) {
     creatureState.setStat(stat, amount);
 
     return true;
+}
+export function checkCoins(cost) {
+    const coins = playerState.getStat(PlayerStats.COINS);
+    if (coins < cost) {
+        console.log(`not enough coins! Need ${cost}.`);
+        return false;
+    } else {
+        return true;
+    }
 }

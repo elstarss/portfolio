@@ -3,7 +3,7 @@ import { EventBus } from '../Utilities/EventBus.js';
 
 class PlayerState {
     #stats = {
-        [PlayerStats.COINS]: { value: 5, max: 500000 },
+        [PlayerStats.COINS]: { value: 3, max: 500000 },
         [PlayerStats.ACCESSORIES]: []
     };
     constructor() {

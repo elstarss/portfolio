@@ -1,8 +1,9 @@
 import { DayTransitionHandler } from './DayTransitionHandler.js';
-import { Actions, performAction } from './ActionHandler.js';
+import { Actions, performAction, ShopActions } from './ActionHandler.js';
 import { playerState } from '../State/PlayerState.js';
 import { PlayerStats } from '../State/Stats.js';
 import { creatureState } from '../State/CreatureState.js';
+import { checkCoins } from './ActionHandler.js';
 
 export const ButtonHandler = {
     start: (scene) => {
@@ -92,6 +93,13 @@ export const ButtonHandler = {
     'buy-soap': () => console.log('buying soap'),
     'buy-food': () => console.log('buying food'),
     glasses: (scene, accessoryKey) => {
-        playerState.addAccessory(accessoryKey);
+        const cost = ShopActions.glasses.cost;
+        if (checkCoins(cost) == true) {
+            playerState.addAccessory(accessoryKey);
+            playerState.setStat(PlayerStats.COINS, -cost);
+            return;
+        } else {
+            console.log('not enough money');
+        }
     }
 };

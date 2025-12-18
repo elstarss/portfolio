@@ -89,7 +89,7 @@ export default class FeedScene extends Phaser.Scene {
 
     completeAction() {
         creatureState.setStat(this.action.stat, this.action.amount);
-        this.time.delayedCall(500, () => {
+        this.time.delayedCall(450, () => {
             this.endInteraction();
         });
     }

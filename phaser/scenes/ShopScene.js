@@ -54,8 +54,12 @@ export default class ShopScene extends Phaser.Scene {
             ShopActions
         );
 
+        const shopText = 'Shades cost 5 coins and are non-refundable! (⌐■_■)';
+
         this.buttons = this.ui.createActionButtons();
-        this.text = this.ui.createCoinText();
+        this.Cointext = this.ui.createCoinText();
+        this.shopText = this.ui.createCustomText(400, 150, shopText, 24);
+        this.shopText.setWordWrapWidth(550).setOrigin(0.5);
 
         this.handleStatChange = (stat, value) => {
             if (stat === PlayerStats.COINS) {
